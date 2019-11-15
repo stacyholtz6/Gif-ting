@@ -1,0 +1,12 @@
+
+/* CSS for etsy results */
+#etsy {
+  margin: 5px;
+  border: 2px solid red;
+  transition: all .2s ease-in-out; 
+}
+
+#etsy:hover { 
+  transform: scale(1.1); 
+}
+
