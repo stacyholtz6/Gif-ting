@@ -39,11 +39,8 @@ $(document).ready(function () {
           if (data.count > 0) {
             $.each(data.results, function (i, item) {
               $("<img id='etsy'/>").attr("src", item.Images[0].url_75x75).appendTo("#etsy-images").wrap(
-                "<a href='" + item.url + "'></a>"
+                "<a href=" + item.url + "></a>"
               );
-              if (i % 4 == 3) {
-                $('<br/>').appendTo('#etsy-images');
-              }
             });
           } else {
             $('<p>No results.</p>').appendTo('#etsy-images');
