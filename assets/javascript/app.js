@@ -39,7 +39,7 @@ $(document).ready(function () {
           if (data.count > 0) {
             $.each(data.results, function (i, item) {
               $("<img id='etsy'/>").attr("src", item.Images[0].url_75x75).appendTo("#etsy-images").wrap(
-                "<a href=" + item.url + "></a>"
+                '<a href="' + item.url + '" target="_blank"></a>'
               );
             });
           } else {
