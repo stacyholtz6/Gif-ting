@@ -14,7 +14,7 @@ firebase.initializeApp(firebaseConfig);
   
   
   
-etsy-api-setup
+// etsy-api-setup
 // etsy ajax call
 // adds item that was searched for can click the image and go to etsy store
 // if more than four images add a break and start new row
