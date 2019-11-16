@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    
+
     <title>Gif-ting</title>
 
     <!-- The Firebase -->
     <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-database.js"></script>
 
-   <!-- bootstrap -->
+    <!-- bootstrap -->
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
     <link rel="stylesheet" href="assets/css/style.css" />
@@ -28,19 +28,37 @@
             </div>
         </div>
         <div class="row">
-            <!-- This is the div for the list of people - there should be an "add person button" -->
             <div class="col-lg-3">
-                List of People with button
+                <!-- This card holds the list of people and button for adding a new person to list -->
+                <div class="card">
+                    <div class="card-header">
+                        I need to shop for:
+                    </div>
+                    <div class="card-body">
+                        <!-- Temporary fillers for our list to visualize -->
+                        <div class="list-group" id="list-tab" role="tablist">
+                            <li class="list-group-item list-group-item-action" data-toggle="list" role="tab">Stanley</li>
+                            <li class="list-group-item list-group-item-action" data-toggle="list" role="tab">Amanda</li>
+                            <li class="list-group-item list-group-item-action" data-toggle="list" role="tab">Bobby</li>
+                            <li class="list-group-item list-group-item-action" data-toggle="list" role="tab">Paige</li>
+                        </div>
+                        <br>
+                        <button class="btn btn-primary" id="add-person">Add Person</a>
+                    </div>
+                </div>
             </div>
-            <div class="col-lg-9">
+        
+        <div class="col-lg-9">
+                 <!-- Added div to wrap around everything we want to display when a person is selected -->
+            <div id="persons-content">
                 <!-- This is the personalized div for the person that is clicked on -->
                 <div class="row">
                     <!-- This should display what is captured on the modal -->
-                    <div class="col-lg-4">Text Box with Person's information</div>
+                    <div class="col-lg-4" id="persons-info">Text Box with Person's information</div>
                     <!-- Display the generated gif - preferably has a still option -->
-                    <div class="col-lg-4">Gif related to person</div>
+                    <div class="col-lg-4" id="persons-gif">Gif related to person</div>
                     <!-- User input for a new search term and button to re-generate search -->
-                    <div class="col-lg-4">Button</div>
+                    <div class="col-lg-4" id="regenerate-button">Button</div>
                 </div>
                 <div class="row">
                     <!-- Carousel for gift ideas - maybe user can drag to gifts to buy -->
@@ -58,7 +76,7 @@
                 </div>
                 <div class="row">
                     <!-- Carousel for gifts to buy - maybe links to Etsy page to buy -->
-                    <div class="col-lg-12">Carousel of gifts to buy</div>
+                    <div class="col-lg-12" id="gift-carousel">Carousel of gifts to buy</div>
                 </div>
             </div>
         </div>
