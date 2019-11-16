@@ -28,7 +28,9 @@ $(document).ready(function () {
 // adds item that was searched for can click the image and go to etsy store
 // if more than four images add a break and start new row
 // currently fetching 16 items
-  $('#etsy-search').on('submit', function () {
+  $('#etsy-search').on('submit', function (event) {
+    event.preventDefault();
+
     api_key = "82wfohi8ezzm1fq3vflms9ul";
     terms = $('#etsy-terms').val();
     etsyURL = "https://openapi.etsy.com/v2/listings/active.js?keywords=" +
