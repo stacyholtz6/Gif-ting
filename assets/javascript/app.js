@@ -11,15 +11,23 @@ var firebaseConfig = {
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-  
-  
-  
+
+
+$(document).ready(function () {
+
+  //initially hides content until person from list is selected
+  $("#persons-content").hide();
+
+  //shows content when person from list is selected
+  $(".list-group-item").on("click", function() {
+    $("#persons-content").show();
+  });
+
 // etsy-api-setup
 // etsy ajax call
 // adds item that was searched for can click the image and go to etsy store
 // if more than four images add a break and start new row
 // currently fetching 16 items
-$(document).ready(function () {
   $('#etsy-search').on('submit', function () {
     api_key = "82wfohi8ezzm1fq3vflms9ul";
     terms = $('#etsy-terms').val();
