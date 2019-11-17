@@ -38,6 +38,25 @@ $(document).ready(function () {
     $("#persons-content").show();
   });
 
+  // run the add person function when the submit button on modal is clicked
+  $(document).on("click", "#save-person", addPerson);
+
+  function addPerson(){
+    // save the values from each of the input fields
+    var tmpName = $("#add-name").val().trim();
+    var tmpRelationship = $("#add-relationship").val().trim();
+    var tmpKeyword = $("#add-keyword").val().trim();
+    var tmpPersonality = $("#add-personality").val().trim();
+    var tmpBudget = $("#add-budget").val().trim();
+    
+    // push to the data array and update firebase
+    updatedGiftListData(tmpName, tmpRelationship, tmpKeyword, tmpPersonality, tmpBudget);
+    writeUserData(id, user, data);
+
+    // closes the modal window
+    $("#addPersonModalCenter").modal('toggle');
+  }
+
 // etsy-api-setup
 // etsy ajax call
 // adds item that was searched for can click the image and go to etsy store
@@ -168,7 +187,17 @@ $(document).ready(function () {
     }  
   }
 });
-    //console.log(user, data);
+    
+
+
+
+
+
+
+
+
+
+//console.log(user, data);
     //var userUID = 1;
   
     // var ref = database.ref('/gif-ting/' + userUID);
