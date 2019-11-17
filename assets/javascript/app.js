@@ -12,6 +12,21 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
+database = firebase.database();
+
+// store user e-mail
+var user;
+// store user name
+var userName;
+
+// store user's information
+var data = {
+  giftList: []
+}
+// store the ID of the firebase that links it with
+var id="";
+var userExists = false;
+
 
 $(document).ready(function () {
 
@@ -63,6 +78,205 @@ $(document).ready(function () {
     });
     return false;
   })
+
+  $("#add-email").on("click", function(event){
+    event.preventDefault();
+
+    // reset the ID and data to "" - the follow code will assign the ID based on the e-mail
+    id = "";
+    data = {
+      giftList: []
+    }
+
+    // sets the user equal to the input value
+    user = $("#email-id").val().trim();
+
+    // push a temp record to trigger the event listener
+    database.ref().push({
+      temp: "temp"
+    })
+
+    // "value" event listener for FB
+    database.ref().on("value", function(snapshot){
+     
+      // for each key item in the db, get the email and the temp items for each record,
+      // if it's a "valid" record, then it will have an email, temp records are setup temporarily
+      // to trigger the event listener, but will be removed below 
+      for (var key in snapshot.val()){
+        var ref = database.ref(key);
+        ref.once("value").then(function(snapshot){
+              var tmpEmail = snapshot.val().email;
+              var tmpDelete = snapshot.val().temp;
+              // if the email in the FB record matches what was input, then this is the record we want
+              // so it sets the global data equal to the data record associate with the key - we also store
+              // the key so we know which record to update later 
+              if(tmpEmail === user){
+                data=snapshot.val().data;
+                id=snapshot.key;
+                //updatePage(); // placeholder for a function that will update the DOM
+              }
+              // if this is temp record, remove it to keep the database clean
+              if(tmpDelete === "temp"){
+                database.ref(key).remove();
+              }
+              
+          })
+          console.log(user, data, id);
+      }
+    })
+  });
+
+  //// ******** THIS IS TEST BUTTON THAT WE WILL REMOVE - IT IS NEED TO TEST THE DATABASE UPDATES
+  $("#test").on("click", function(event){
+    event.preventDefault();
+    // you can change these values to see how the DB updates - eventually this will be the modal form
+    updatedGiftListData("Annie", "mom", "tools", "awesome", "$20");
+    console.log(data);
+    writeUserData(id, user, data);
+  })
+
+  // use this to update the gift list with a new person - pushes to the object, then use writeUserData
+  // to push to FB
+  function updatedGiftListData(name, relationship, keyword, personality, budget){
+    data.giftList.push({
+      name: name, 
+      relationship: relationship, 
+      keyword: keyword,
+      personality: personality,
+      budget: budget,
+      savedGiftIdea: ""
+    }) 
+  }
+
+  // function to push info to FB - this should be used anytime the "data" is pushed to data.giftList
+  function writeUserData(key, user, data) {
+    // if the key is blank, that means there isn't a record for that user, so it pushes the data, by 
+    // setting id equal to this push, it resets id equal to the key value
+    if(key===""){
+      id = database.ref().push({
+        email: user,
+        data: data
+      });
+      // otherwise, if there is a key, we want to set the record associated with that key - this will 
+      // OVERWRITE what is there, so it is very important to keep the data variable clean and always be
+      // updating the db whenever the data changes
+    } else{
+      database.ref(key).set({
+        email: user,
+        data: data
+      })
+    }  
+  }
 });
+    //console.log(user, data);
+    //var userUID = 1;
+  
+    // var ref = database.ref('/gif-ting/' + userUID);
+    // ref.on('value', function(data) {
+    //   //data.key will be like -KPmraap79lz41FpWqLI
+    //   database.ref().push({
+    //     email: user,
+    //     data: data
+    //   })
+    // });
+    // userID = user.replace("@", "");
+    // userID = userID.split('.').join('');
+    // console.log(userID);
+    // writeUserData(userID, user, data);
+
+    // var userId = lists.indexOf(user)+1;
+    // console.log(user);
+    // console.log(userId);
+    
+    // return firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
+    //   console.log(snapshot.val());
+    //   console.log(snapshot.val().email);
+      //var username = (snapshot.val() && snapshot.val().username) || 'Anonymous';
+    // ...
+
+   // userUID++;
+
+    // database.ref().push({
+    //   email: user,
+    //   data: data
+    // })
 
 
+    //console.log("determine if user exists");
+  //})
+
+  //var userId = user;
+  // database.ref('/users/' + userID).once('value').then(function(snapshot) {
+  // console.log(snapshot);
+  // // ...
+  // });
+
+  //console.log(database.ref("/gif-ting/").orderByChild('uid').equalTo(userUID));
+
+  //console.log(database.ref('/gif-ting/-LtqyPOmvrl7NBQZcgvE'));
+
+  // var userId = lists.user;
+  // console.log(userId);
+  
+  // return firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
+  //   console.log(snapshot.val().email);
+  //   //var username = (snapshot.val() && snapshot.val().username) || 'Anonymous';
+  // // ...
+  // });
+
+  // database.ref().on("value", function(snapshot){
+  //   console.log("checking database");
+  //   for (var key in snapshot.val()){
+     
+  //     var ref = database.ref(key);
+  //     ref.once("value").then(function(snapshot){
+  //           var tmpEmail = snapshot.val().email;
+  //           if(tmpEmail === user){
+  //             data=snapshot.val().data;
+  //           }
+  //       })
+  //   }
+  // })
+
+      // console.log(userExists);
+      // if(userExists === false){
+      //   // database.ref().push({
+      //   //   email: user,
+      //   //   data: data
+      //   // })
+      //   console.log("user doesn't exist");
+      // }
+    //})
+
+  // database.ref().on("child_added", function(childSnapshot){
+
+  //   // id = childSnapshot.key;
+  //   // console.log(id);
+  //   var childEmail = childSnapshot.val().email;
+  //   console.log(childEmail);
+  //   if(user === childEmail){
+  //     id = childSnapshot.key;
+  //   }
+  //   console.log(user, id);
+  //   console.log(database.ref(id));
+  //   var ref = database.ref(id);
+  //   ref.once("value").then(function(snapshot){
+  //     console.log(snapshot.val());
+  //     console.log(snapshot.val().email);
+  //     console.log(snapshot.key);
+  //     console.log(snapshot.val().data)
+  //   })
+  //   //console.log(database.child(id));
+  //   // var ref = database.ref(id);
+  //   // ref.once("value")
+  //   //   .then(function(snapshot) {
+  //   //     var key = snapshot.key; // "ada"
+  //   //     var childKey = snapshot.child("name/last").key; // "last"
+  //   //   });
+  // })
+  
+  // var ref = database.ref("-Ltp_7u-F_Fojt65372p");
+  // ref.once("value").then(function(snapshot){
+  //   console.log(snapshot.val());
+  //   console.log(snapshot.val().email);
+  // })
