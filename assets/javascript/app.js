@@ -33,10 +33,25 @@ $(document).ready(function () {
   //initially hides content until person from list is selected
   $("#persons-content").hide();
 
+  // run the add person function when the submit button on modal is clicked
+  $(document).on("click", ".list-group-item", displayPerson);
   //shows content when person from list is selected
-  $(".list-group-item").on("click", function() {
+  // $(".list-group-item").on("click", function() {
+  //   $("#persons-content").show();
+  // });
+
+  function displayPerson(){
     $("#persons-content").show();
-  });
+    var idx = $(this).attr("person-index");
+    
+    $("#selected-name").text(data.giftList[idx].name + "'s");
+    $("#relationship").text(data.giftList[idx].relationship);
+    $("#keyword").text(data.giftList[idx].keyword);
+    $("#description").text(data.giftList[idx].personality);
+    $("#budget").text(data.giftList[idx].budget);
+    $("#selected-name-gif").text(data.giftList[idx].name);
+    $("#selected-name-search").text(data.giftList[idx].name);
+  }
 
   // run the add person function when the submit button on modal is clicked
   $(document).on("click", "#save-person", addPerson);
@@ -52,6 +67,7 @@ $(document).ready(function () {
     // push to the data array and update firebase
     updatedGiftListData(tmpName, tmpRelationship, tmpKeyword, tmpPersonality, tmpBudget);
     writeUserData(id, user, data);
+    createButtons();
 
     // closes the modal window
     $("#addPersonModalCenter").modal('toggle');
@@ -101,6 +117,10 @@ $(document).ready(function () {
   $("#add-email").on("click", function(event){
     event.preventDefault();
 
+    // hide the person's content when switching users
+    $("#persons-content").hide();
+    // empty the buttons - this will be necessary when a new user starts a list
+    $("#person-buttons").empty();
     // reset the ID and data to "" - the follow code will assign the ID based on the e-mail
     id = "";
     data = {
@@ -132,6 +152,7 @@ $(document).ready(function () {
               if(tmpEmail === user){
                 data=snapshot.val().data;
                 id=snapshot.key;
+                createButtons();
                 //updatePage(); // placeholder for a function that will update the DOM
               }
               // if this is temp record, remove it to keep the database clean
@@ -145,14 +166,43 @@ $(document).ready(function () {
     })
   });
 
-  //// ******** THIS IS TEST BUTTON THAT WE WILL REMOVE - IT IS NEED TO TEST THE DATABASE UPDATES
-  $("#test").on("click", function(event){
-    event.preventDefault();
-    // you can change these values to see how the DB updates - eventually this will be the modal form
-    updatedGiftListData("Annie", "mom", "tools", "awesome", "$20");
-    console.log(data);
-    writeUserData(id, user, data);
-  })
+    // Function for displaying person buttons
+  function createButtons() {
+    // Clears the buttons that are on page, to repopulate them
+    // (this is necessary otherwise we will have repeat buttons)
+    $("#person-buttons").empty();
+
+    // Looping through the array of people
+    for (var i = 0; i < data.giftList.length; i++) {
+
+        // Then dynamically generating buttons
+        var a = $("<li>");
+        // Adding a class to style the button to bootstrap
+        a.addClass("list-group-item list-group-item-action list-group-item-info");
+        // Adding a data-attribute
+        a.data("toggle", "list");
+        a.attr("person-index", i);
+        // Providing the button's text with the person's name
+        a.text(data.giftList[i].name);
+        // setup an attr of disabled to false (meaning it is in enabled) 
+        a.attr("disabled", false);
+
+        // create a button that will hold the x to remove the word
+        var x = $("<button>");
+        // add a class to pull in the bootstrap close
+        x.addClass("close");
+        // add an x to the element as text
+        x.append("&times;");
+        // give the x an attribute with name - this will delete the proper button when clicked
+        // *** Might need to rethink this attribute ***
+        x.attr("person-name-button", i);
+        // append the x button
+        a.append(x);
+
+        // Adding the button to the HTML
+        $("#person-buttons").append(a);
+    }
+  }
 
   // use this to update the gift list with a new person - pushes to the object, then use writeUserData
   // to push to FB

@@ -31,7 +31,7 @@
                         <button type="submit" class="btn btn-primary" id="add-email">Search</button>
                     </div>
                 </form>
-                <button id=test>Test</button>
+                <!-- <button id=test>Test</button> -->
                 <!-- <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p> -->
             </div>
         </div>
@@ -44,11 +44,11 @@
                     </div>
                     <div class="card-body">
                         <!-- Temporary fillers for our list to visualize -->
-                        <div class="list-group">
-                            <li class="list-group-item list-group-item-action list-group-item-info" data-toggle="list">Stanley</li>
+                        <div class="list-group" id="person-buttons">
+                            <!-- <li class="list-group-item list-group-item-action list-group-item-info" data-toggle="list">Stanley</li>
                             <li class="list-group-item list-group-item-action list-group-item-info" data-toggle="list">Amanda</li>
                             <li class="list-group-item list-group-item-action list-group-item-info" data-toggle="list">Bobby</li>
-                            <li class="list-group-item list-group-item-action list-group-item-info" data-toggle="list">Paige</li>
+                            <li class="list-group-item list-group-item-action list-group-item-info" data-toggle="list">Paige</li> -->
                         </div>
                         <br>
                         <button class="btn btn-light" id="add-person" type="button" data-toggle="modal"
@@ -78,7 +78,7 @@
                         <!-- Display the generated gif - preferably has a still option -->
                         <div class="col-lg-4" id="persons-gif">
                             <div class="card">
-                                <div class="card-header">A GIF related to <span id="selected-name">*Amanda*</span>
+                                <div class="card-header">A GIF related to <span id="selected-name-gif">*Amanda*</span>
                                 </div>
                                     <div class="card-body">
                                         <div id="gif"></div>
@@ -88,7 +88,7 @@
                         <!-- User input for a new search term and button to re-generate search -->
                         <div class="col-lg-4" id="regenerate-button">
                                 <div class="card">
-                                    <div class="card-header">Regenerate keyword for <span id="selected-name">*Amanda*</span>
+                                    <div class="card-header">Regenerate keyword for <span id="selected-name-search">*Amanda*</span>
                                     </div>
                                         <div class="card-body">
                                             <div class="input-group mb-3">
