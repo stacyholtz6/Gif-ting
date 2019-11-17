@@ -44,15 +44,14 @@
                     </div>
                     <div class="card-body">
                         <!-- Temporary fillers for our list to visualize -->
-                        <div class="list-group" id="list-tab" role="tablist">
-                            <li class="list-group-item list-group-item-action" data-toggle="list" role="tab">Stanley
-                            </li>
-                            <li class="list-group-item list-group-item-action" data-toggle="list" role="tab">Amanda</li>
-                            <li class="list-group-item list-group-item-action" data-toggle="list" role="tab">Bobby</li>
-                            <li class="list-group-item list-group-item-action" data-toggle="list" role="tab">Paige</li>
+                        <div class="list-group">
+                            <li class="list-group-item list-group-item-action list-group-item-info" data-toggle="list">Stanley</li>
+                            <li class="list-group-item list-group-item-action list-group-item-info" data-toggle="list">Amanda</li>
+                            <li class="list-group-item list-group-item-action list-group-item-info" data-toggle="list">Bobby</li>
+                            <li class="list-group-item list-group-item-action list-group-item-info" data-toggle="list">Paige</li>
                         </div>
                         <br>
-                        <button class="btn btn-primary" id="add-person" type="button" data-toggle="modal"
+                        <button class="btn btn-light" id="add-person" type="button" data-toggle="modal"
                             data-target="#addPersonModalCenter">Add Person</a>
                     </div>
                 </div>
@@ -64,33 +63,87 @@
                     <!-- This is the personalized div for the person that is clicked on -->
                     <div class="row">
                         <!-- This should display what is captured on the modal -->
-                        <div class="col-lg-4" id="persons-info">Text Box with Person's information</div>
-                        <!-- Display the generated gif - preferably has a still option -->
-                        <div class="col-lg-4" id="persons-gif">Gif related to person</div>
-                        <!-- User input for a new search term and button to re-generate search -->
-                        <div class="col-lg-4" id="regenerate-button">Button</div>
-                    </div>
-                    <div class="row">
-                        <!-- Carousel for gift ideas - maybe user can drag to gifts to buy -->
-                        <div class="col-lg-12">
-                            <form id="etsy-search">
-                                <div class="form-group">
-                                    <label for="search-input">Etsy Gift Search</label>
-                                    <input id="etsy-terms" placeholder="search gifts">
-                                    <button type="submit" class="btn btn-primary">Search</button>
+                        <div class="col-lg-4" id="persons-info">
+                                <div class="card">
+                                    <div class="card-header"><span id="selected-name">*Amanda's*</span> info
+                                    </div>
+                                        <div class="card-body">
+                                            <p>Relationship: <span id="relationship"></span></p>
+                                            <p>Keyword for gift ideas: <span id="keyword"></span></p>
+                                            <p>Word description: <span id="description"></span></p>
+                                            <p>Budget: <span id="budget"></span></p>
+                                        </div>
                                 </div>
-                            </form>
-                            <!-- etsy search results get dumped here -->
-                            <div id="etsy-images"></div>
+                        </div>
+                        <!-- Display the generated gif - preferably has a still option -->
+                        <div class="col-lg-4" id="persons-gif">
+                            <div class="card">
+                                <div class="card-header">A GIF related to <span id="selected-name">*Amanda*</span>
+                                </div>
+                                    <div class="card-body">
+                                        <div id="gif"></div>
+                                    </div>
+                            </div>
+                        </div>
+                        <!-- User input for a new search term and button to re-generate search -->
+                        <div class="col-lg-4" id="regenerate-button">
+                                <div class="card">
+                                    <div class="card-header">Regenerate keyword for <span id="selected-name">*Amanda*</span>
+                                    </div>
+                                        <div class="card-body">
+                                            <div class="input-group mb-3">
+                                                <input type="text" class="form-control" placeholder="keyword" aria-describedby="button-addon2">
+                                            <div class="input-group-append">
+                                            <button class="btn btn-light" type="button" id="button-addon2">Submit</button>
+                                            </div>
+                                            </div>
+                                        </div>
+                                </div>
                         </div>
                     </div>
+
+                    <br> 
+
+                    <div class="row">
+                        <!-- Carousel for gift ideas - maybe user can drag to gifts to buy -->
+                        <div class="col-lg-12" id="gift-ideas">
+                                <div class="card">
+                                    <div class="card-header">Etsy Gift Search
+                                    </div>
+                                        <div class="card-body">
+                                            <form id="etsy-search"> 
+                                                <div class="input-group mb-3 form-group">
+                                                    <input id="etsy-terms" type="text" class="form-control" placeholder="search gifts" aria-describedby="button-addon2">
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-light" type="submit" id="button-addon2">Search</button>
+                                                    </div>
+                                                </div>
+                                            </form>  
+                                        </div>
+                                    <div id="etsy-images"></div>
+                                </div>
+                            </div>
+                        </div>
+                
+                    <br>
+
+                    <div class="row">
+                        <div class="col-lg-12" id="generated-ideas">
+                            carousel holding gift ideas generated by keyword
+                        </div>
+                    </div>
+
                     <div class="row">
                         <!-- Carousel for gifts to buy - maybe links to Etsy page to buy -->
-                        <div class="col-lg-12" id="gift-carousel">Carousel of gifts to buy</div>
+                        <div class="col-lg-12" id="to-buy">carousel holding gift items user wants to buy
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <br>
+        <br>
 
 
         <!-- Modal -->
@@ -108,19 +161,24 @@
                         <form>
                             <label for="addPersonInput">Name</label>
                             <input class="form-control" id="add-name" placeholder="John">
+                            <br>
                             <label for="addPersonRelInput">Relationship</label>
                             <input class="form-control" id="add-relationship" placeholder="">
+                            <br>
                             <label for="addPersonGiftKeywordInput">Keyword for Gift Ideas</label>
                             <input class="form-control" id="add-keyword" placeholder="">
+                            <br>
                             <label for="addPersonPersonalityInput">Word to Describe this Person</label>
                             <input class="form-control" id="add-personality" placeholder="">
+                            <br>
                             <label for="addPersonBudgetInput">Budget</label>
                             <input class="form-control" id="add-budget" placeholder="">
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" id="save-person">Save changes</button>
+                        <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-light" id="save-person">Save changes</button>
+
                     </div>
                 </div>
             </div>
