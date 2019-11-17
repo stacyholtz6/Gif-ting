@@ -33,10 +33,25 @@ $(document).ready(function () {
   //initially hides content until person from list is selected
   $("#persons-content").hide();
 
+  // run the add person function when the submit button on modal is clicked
+  $(document).on("click", ".list-group-item", displayPerson);
   //shows content when person from list is selected
-  $(".list-group-item").on("click", function() {
+  // $(".list-group-item").on("click", function() {
+  //   $("#persons-content").show();
+  // });
+
+  function displayPerson(){
     $("#persons-content").show();
-  });
+    var idx = $(this).attr("person-index");
+    
+    $("#selected-name").text(data.giftList[idx].name + "'s");
+    $("#relationship").text(data.giftList[idx].relationship);
+    $("#keyword").text(data.giftList[idx].keyword);
+    $("#description").text(data.giftList[idx].personality);
+    $("#budget").text(data.giftList[idx].budget);
+    $("#selected-name-gif").text(data.giftList[idx].name);
+    $("#selected-name-search").text(data.giftList[idx].name);
+  }
 
   // run the add person function when the submit button on modal is clicked
   $(document).on("click", "#save-person", addPerson);
@@ -102,6 +117,10 @@ $(document).ready(function () {
   $("#add-email").on("click", function(event){
     event.preventDefault();
 
+    // hide the person's content when switching users
+    $("#persons-content").hide();
+    // empty the buttons - this will be necessary when a new user starts a list
+    $("#person-buttons").empty();
     // reset the ID and data to "" - the follow code will assign the ID based on the e-mail
     id = "";
     data = {
@@ -162,6 +181,7 @@ $(document).ready(function () {
         a.addClass("list-group-item list-group-item-action list-group-item-info");
         // Adding a data-attribute
         a.data("toggle", "list");
+        a.attr("person-index", i);
         // Providing the button's text with the person's name
         a.text(data.giftList[i].name);
         // setup an attr of disabled to false (meaning it is in enabled) 
@@ -175,7 +195,7 @@ $(document).ready(function () {
         x.append("&times;");
         // give the x an attribute with name - this will delete the proper button when clicked
         // *** Might need to rethink this attribute ***
-        x.attr("person-name-button", data.giftList[i].name);
+        x.attr("person-name-button", i);
         // append the x button
         a.append(x);
 
