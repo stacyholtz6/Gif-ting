@@ -1,4 +1,4 @@
-
+// ************ Firebase Config ******************
   //Firebase configuration
 var firebaseConfig = {
   apiKey: "AIzaSyANy9CUVmdOHWlpvzq6-PlyWJgsNfpVcYw",
@@ -14,6 +14,7 @@ firebase.initializeApp(firebaseConfig);
 
 database = firebase.database();
 
+// ************ Declare Global Variables ******************
 // store user e-mail
 var user;
 // store user name
@@ -33,25 +34,28 @@ $(document).ready(function () {
   //initially hides content until person from list is selected
   $("#persons-content").hide();
 
+  // ************ Display Person Information when Button Clicked ******************
+
   // run the add person function when the submit button on modal is clicked
   $(document).on("click", ".list-group-item", displayPerson);
-  //shows content when person from list is selected
-  // $(".list-group-item").on("click", function() {
-  //   $("#persons-content").show();
-  // });
+  
 
   function displayPerson(){
-    $("#persons-content").show();
-    var idx = $(this).attr("person-index");
-    
-    $("#selected-name").text(data.giftList[idx].name + "'s");
-    $("#relationship").text(data.giftList[idx].relationship);
-    $("#keyword").text(data.giftList[idx].keyword);
-    $("#description").text(data.giftList[idx].personality);
-    $("#budget").text(data.giftList[idx].budget);
-    $("#selected-name-gif").text(data.giftList[idx].name);
-    $("#selected-name-search").text(data.giftList[idx].name);
+    if(!$(this).attr("disabled")){
+      $("#persons-content").show();
+      var idx = $(this).attr("person-index");
+      
+      $("#selected-name").text(data.giftList[idx].name + "'s");
+      $("#relationship").text(data.giftList[idx].relationship);
+      $("#keyword").text(data.giftList[idx].keyword);
+      $("#description").text(data.giftList[idx].personality);
+      $("#budget").text(data.giftList[idx].budget);
+      $("#selected-name-gif").text(data.giftList[idx].name);
+      $("#selected-name-search").text(data.giftList[idx].name);
+    }
   }
+
+  // ************ Add Person to Gift List ******************
 
   // run the add person function when the submit button on modal is clicked
   $(document).on("click", "#save-person", addPerson);
@@ -72,6 +76,8 @@ $(document).ready(function () {
     // closes the modal window
     $("#addPersonModalCenter").modal('toggle');
   }
+
+  // ************ Esty API ******************
 
 // etsy-api-setup
 // etsy ajax call
@@ -113,6 +119,8 @@ $(document).ready(function () {
     });
     return false;
   })
+
+  // ************ User Enters Email to "Login" ******************
 
   $("#add-email").on("click", function(event){
     event.preventDefault();
@@ -166,6 +174,8 @@ $(document).ready(function () {
     })
   });
 
+  // ************ Create Buttons for Gift List ******************
+
     // Function for displaying person buttons
   function createButtons() {
     // Clears the buttons that are on page, to repopulate them
@@ -204,6 +214,27 @@ $(document).ready(function () {
     }
   }
 
+  // ************ Delete a person on Gift List ******************
+
+    // if the close button is clicked, run this function
+  $(document).on("click", ".close", function(){
+    // return the parent element - this is the animal button
+    var par = $(event.target).parent();
+    // disable the parent button - this keeps the gifs from displaying when user is trying to 
+    // remove the button
+    par.attr("disabled", true);
+    // declare a variable of the animal of the clicked button
+    var rem = $(this).attr("person-name-button");
+    // remove the element from the animals array
+    data.giftList.splice(rem,1);
+    // render the buttons again - the removed button will not be there anymore
+    createButtons();
+    // submit the deletion to the database
+    writeUserData(id, user, data);
+  })
+
+  // ************ Make Changes to the Gift List ******************
+
   // use this to update the gift list with a new person - pushes to the object, then use writeUserData
   // to push to FB
   function updatedGiftListData(name, relationship, keyword, personality, budget){
@@ -216,6 +247,8 @@ $(document).ready(function () {
       savedGiftIdea: ""
     }) 
   }
+
+  // ************ Push Data to Firebase ******************
 
   // function to push info to FB - this should be used anytime the "data" is pushed to data.giftList
   function writeUserData(key, user, data) {
