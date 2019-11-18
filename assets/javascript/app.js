@@ -229,6 +229,8 @@ $(document).ready(function () {
     data.giftList.splice(rem,1);
     // render the buttons again - the removed button will not be there anymore
     createButtons();
+    // submit the deletion to the database
+    writeUserData(id, user, data);
   })
 
   // ************ Make Changes to the Gift List ******************
