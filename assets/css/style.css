@@ -10,4 +10,32 @@
   transform: scale(1.1); 
 }
 
+.portfolio-slider {
+  /* margin: 60px auto; */
+  /* max-width: 1200px; */
+  border-top: 4px solid gray;
+  border-bottom: 4px solid gray;
+  /*display: flex;*/
+/*   flex-flow: row wrap; */
+}
+.portfolio-slider {
+  flex: 1 1 0;
+  background-color: whitesmoke;
+}
+
+.inner {
+  padding: 20px;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+img:hover {
+  opacity: 0.9;
+}
+
+.gallery-background {
+  background-color: #243B40;
+}
 
