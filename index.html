@@ -82,6 +82,15 @@
                                     <p>Word description: <span id="description"></span></p>
                                     <p>Budget: <span id="budget"></span></p>
                                 </div>
+
+                                </div>
+                                <div class="card-body">
+                                    <p>Relationship: <span id="relationship"></span></p>
+                                    <p>Keyword for gift ideas: <span id="keyword"></span></p>
+                                    <p>Word description: <span id="description"></span></p>
+                                    <p>Budget: <span id="budget"></span></p>
+                                </div>
+
                             </div>
                         </div>
                         <!-- Display the generated gif - preferably has a still option -->
@@ -178,6 +187,9 @@
                                         <div class="inner"><img src="assets/images/winterGifts.jpeg" alt="Winter Gifts">
                                         </div>
                                     </div>
+                                <div class="card-body">
+
+
                                 </div>
                             </div>
                         </div>
@@ -225,11 +237,71 @@
                     <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-light" id="save-person">Save changes</button>
 
+
+
+    <br>
+    <br>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="addPersonModalCenter" tabindex="-1" role="dialog" aria-labelledby="addPersonCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Add another Person</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <label for="addPersonInput">Name</label>
+                        <input class="form-control" id="add-name" placeholder="John">
+                        <br>
+                        <label for="addPersonRelInput">Relationship</label>
+                        <input class="form-control" id="add-relationship" placeholder="">
+                        <br>
+                        <label for="addPersonGiftKeywordInput">Keyword for Gift Ideas</label>
+                        <input class="form-control" id="add-keyword" placeholder="">
+                        <br>
+                        <label for="addPersonPersonalityInput">Word to Describe this Person</label>
+                        <input class="form-control" id="add-personality" placeholder="">
+                        <br>
+                        <label for="addPersonBudgetInput">Budget</label>
+                        <input class="form-control" id="add-budget" placeholder="">
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-light" id="save-person">Save changes</button>
                 </div>
             </div>
         </div>
     </div>
 </body>
+<!-- footer-->
+
+<nav class="navbar fixed-bottom-center">
+    <a class="navbar-brand nav-link copy" href="https://alixgrillo.github.io/">&copy; Alix Grillo</a>
+    <a class="nav-link" href="https://alixgrillo.github.io/"></a>
+</nav>
+<br>
+ <nav class="navbar fixed-bottom-right">
+  <a class="navbar-brand nav-link copy" href="https://stacyholtz6.github.io">&copy;Stacy Holtz</a>
+  <a class="nav-link" href="https://github.com/stacyholtz6"></a>
+</nav>
+<br>
+ <nav class="navbar fixed-bottom-left">
+  <a class="navbar-brand nav-link copy" href="https://joditivis.github.io/Bootstrap-Portfolio/">&copy;Jodi Tivis</a>
+  <a class="nav-link" href="https://github.com/joditivis"></a>
+</nav>
+<br>
+ <nav class="navbar fixed-bottom-justified-left">
+  <a class="navbar-brand nav-link copy" href="https://chloe-design.github.io/bootstrap-portfolio/">&copy;Chloe Stephens</a>
+  <a class="nav-link" href="chloe-design.github.io"></a>
+</nav>
+
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery.js"></script>
