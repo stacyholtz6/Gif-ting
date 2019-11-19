@@ -91,11 +91,6 @@ var terms = data.giftList[idx].keyword;
 
   // ************ Esty API ******************
 
-  // etsy-api-setup
-  // etsy ajax call
-  // adds item that was searched for can click the image and go to etsy store
-  // if more than four images add a break and start new row
-  // currently fetching 16 items
   $('#etsy-search').on('submit', function (event) {
     event.preventDefault();
 
@@ -318,5 +313,8 @@ var terms = data.giftList[idx].keyword;
       })
     }
   }
+
+  // ************ Slick Carousel **********************************
+  
 });
 
