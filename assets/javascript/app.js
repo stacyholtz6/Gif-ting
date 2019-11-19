@@ -25,7 +25,7 @@ var data = {
   giftList: []
 }
 // store the ID of the firebase that links it with
-var id="";
+var id = "";
 var userExists = false;
 
 
@@ -62,7 +62,7 @@ $(document).ready(function () {
       $("#selected-name-gif").text(data.giftList[idx].name);
       $("#selected-name-search").text(data.giftList[idx].name);
 
-var terms = data.giftList[idx].keyword;  
+      var terms = data.giftList[idx].keyword;
       searchEtsy(terms, "displayideas")
     }
   }
@@ -72,7 +72,7 @@ var terms = data.giftList[idx].keyword;
   // run the add person function when the submit button on modal is clicked
   $(document).on("click", "#save-person", addPerson);
 
-  function addPerson(){
+  function addPerson() {
     // save the values from each of the input fields
     var tmpName = $("#add-name").val().trim();
     var tmpRelationship = $("#add-relationship").val().trim();
@@ -145,7 +145,7 @@ var terms = data.giftList[idx].keyword;
 
   // ************ User Enters Email to "Login" ******************
 
-  $("#add-email").on("click", function(event){
+  $("#add-email").on("click", function (event) {
     event.preventDefault();
 
     // hide the person's content when switching users
@@ -162,31 +162,31 @@ var terms = data.giftList[idx].keyword;
     user = $("#email-id").val().trim();
 
     // "value" event listener for FB
-    database.ref().on("value", function(snapshot){
+    database.ref().on("value", function (snapshot) {
       console.log("this gets triggered")
       // for each key item in the db, get the email and the temp items for each record,
       // if it's a "valid" record, then it will have an email, temp records are setup temporarily
       // to trigger the event listener, but will be removed below 
-      for (var key in snapshot.val()){
+      for (var key in snapshot.val()) {
         var ref = database.ref(key);
-        ref.once("value").then(function(snapshot){
+        ref.once("value").then(function (snapshot) {
           var tmpEmail = snapshot.val().email;
           var tmpDelete = snapshot.val().temp;
           // if the email in the FB record matches what was input, then this is the record we want
           // so it sets the global data equal to the data record associate with the key - we also store
           // the key so we know which record to update later 
-          
-     if (tmpEmail === user) {
+
+          if (tmpEmail === user) {
             //check to see if the data exists - if there is no data, it means the user deleted all of the
             // people in the gift list, so we want to keep the data as as blank object
-            if(typeof snapshot.val().data !=='undefined'){
-                data = snapshot.val().data;
+            if (typeof snapshot.val().data !== 'undefined') {
+              data = snapshot.val().data;
             }
             id = snapshot.key;
             createButtons(id);
             console.log(user, data, id);
           }
-     
+
         })
       }
     })
@@ -203,7 +203,7 @@ var terms = data.giftList[idx].keyword;
 
     // don't try to create buttons if the data is undefined - this is a
     // fail safe to keep errors from happening
-    if(typeof data !== 'undefined'){
+    if (typeof data !== 'undefined') {
 
       // Looping through the array of people
       for (var i = 0; i < data.giftList.length; i++) {
@@ -240,7 +240,7 @@ var terms = data.giftList[idx].keyword;
 
   // ************ Regenerate Keyword ***************************
 
-  $(document).on("click", "#button-addon2", function(event){
+  $(document).on("click", "#button-addon2", function (event) {
     event.preventDefault();
     console.log("regenerate keyword");
   })
@@ -248,7 +248,7 @@ var terms = data.giftList[idx].keyword;
   // ************ Delete a person on Gift List ******************
 
   // if the close button is clicked, run this function
-  $(document).on("click", ".close", function(){
+  $(document).on("click", ".close", function () {
     // return the parent element 
     var par = $(event.target).parent();
     // disable the parent button - this keeps the gifs from displaying when user is trying to 
@@ -260,18 +260,18 @@ var terms = data.giftList[idx].keyword;
 
     // if thre is only person in the list, then reset the gift list to an empty object
     // and empty the buttons - this keeps it from going to "undefined"
-    if(data.giftList.length===1){
+    if (data.giftList.length === 1) {
       data = {
         giftList: []
       }
       $("#person-buttons").empty();
-    } else{
+    } else {
       // remove the element from the gift list array
-      data.giftList.splice(rem,1);
+      data.giftList.splice(rem, 1);
       // render the buttons again - the removed button will not be there anymore
       createButtons();
     }
-    
+
     // submit the deletion to the database
     writeUserData(id, user, data);
     console.log(data + "after push");
@@ -281,7 +281,7 @@ var terms = data.giftList[idx].keyword;
 
   // use this to update the gift list with a new person - pushes to the object, then use writeUserData
   // to push to FB
-  function updatedGiftListData(name, relationship, keyword, personality, budget){
+  function updatedGiftListData(name, relationship, keyword, personality, budget) {
     data.giftList.push({
       name: name,
       relationship: relationship,
@@ -298,7 +298,7 @@ var terms = data.giftList[idx].keyword;
   function writeUserData(key, user, data) {
     // if the key is blank, that means there isn't a record for that user, so it pushes the data, by 
     // setting id equal to this push, it resets id equal to the key value
-    if(key===""){
+    if (key === "") {
       id = database.ref().push({
         email: user,
         data: data
@@ -306,7 +306,7 @@ var terms = data.giftList[idx].keyword;
       // otherwise, if there is a key, we want to set the record associated with that key - this will 
       // OVERWRITE what is there, so it is very important to keep the data variable clean and always be
       // updating the db whenever the data changes
-    } else{
+    } else {
       database.ref(key).set({
         email: user,
         data: data
@@ -315,6 +315,38 @@ var terms = data.giftList[idx].keyword;
   }
 
   // ************ Slick Carousel **********************************
-  
-});
+  $('.gallery-responsive').slick({
+    dots: true,
+    infinite: true,
+    speed: 300,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: false
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
+  });
 
+
+});

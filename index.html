@@ -82,6 +82,15 @@
                                     <p>Word description: <span id="description"></span></p>
                                     <p>Budget: <span id="budget"></span></p>
                                 </div>
+
+                                </div>
+                                <div class="card-body">
+                                    <p>Relationship: <span id="relationship"></span></p>
+                                    <p>Keyword for gift ideas: <span id="keyword"></span></p>
+                                    <p>Word description: <span id="description"></span></p>
+                                    <p>Budget: <span id="budget"></span></p>
+                                </div>
+
                             </div>
                         </div>
                         <!-- Display the generated gif - preferably has a still option -->
@@ -163,7 +172,23 @@
                                 <div class="card-header">
                                     Other Gift Ideas
                                 </div>
+                                <div class="card-body gallery-background">
+                                    <div class="gallery gallery-responsive portfolio-slider">
+                                        <div class="inner"><img src="assets/images/electronics.jpeg" alt="Electronics">
+                                        </div>
+                                        <div class="inner"><img src="assets/images/furBaby.jpeg" alt="Pet Gifts">
+                                        </div>
+                                        <div class="inner"><img src="assets/images/forHer.jpeg" alt="Gifts for Her">
+                                        </div>
+                                        <div class="inner"><img src="assets/images/giftsForHim.jpg" alt="Gifts for Him">
+                                        </div>
+                                        <div class="inner"><img src="assets/images/kidsGifts.jpeg" alt="Gifts for Kids">
+                                        </div>
+                                        <div class="inner"><img src="assets/images/winterGifts.jpeg" alt="Winter Gifts">
+                                        </div>
+                                    </div>
                                 <div class="card-body">
+
 
                                 </div>
                             </div>
@@ -212,6 +237,44 @@
                     <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-light" id="save-person">Save changes</button>
 
+
+
+    <br>
+    <br>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="addPersonModalCenter" tabindex="-1" role="dialog" aria-labelledby="addPersonCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Add another Person</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <label for="addPersonInput">Name</label>
+                        <input class="form-control" id="add-name" placeholder="John">
+                        <br>
+                        <label for="addPersonRelInput">Relationship</label>
+                        <input class="form-control" id="add-relationship" placeholder="">
+                        <br>
+                        <label for="addPersonGiftKeywordInput">Keyword for Gift Ideas</label>
+                        <input class="form-control" id="add-keyword" placeholder="">
+                        <br>
+                        <label for="addPersonPersonalityInput">Word to Describe this Person</label>
+                        <input class="form-control" id="add-personality" placeholder="">
+                        <br>
+                        <label for="addPersonBudgetInput">Budget</label>
+                        <input class="form-control" id="add-budget" placeholder="">
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-light" id="save-person">Save changes</button>
                 </div>
             </div>
         </div>
