@@ -83,202 +83,225 @@
                                     <p>Budget: <span id="budget"></span></p>
                                 </div>
 
-                                </div>
-                                <div class="card-body">
-                                    <p>Relationship: <span id="relationship"></span></p>
-                                    <p>Keyword for gift ideas: <span id="keyword"></span></p>
-                                    <p>Word description: <span id="description"></span></p>
-                                    <p>Budget: <span id="budget"></span></p>
-                                </div>
+                            </div>
+                            <div class="card-body">
+                                <p>Relationship: <span id="relationship"></span></p>
+                                <p>Keyword for gift ideas: <span id="keyword"></span></p>
+                                <p>Word description: <span id="description"></span></p>
+                                <p>Budget: <span id="budget"></span></p>
+                            </div>
 
+                        </div>
+                    </div>
+                    <!-- Display the generated gif - preferably has a still option -->
+                    <div class="col-lg-4" id="persons-gif">
+                        <div class="card">
+                            <div class="card-header">A GIF related to <span id="selected-name-gif">*Amanda*</span>
+                            </div>
+                            <div class="card-body">
+                                <div id="gif"></div>
                             </div>
                         </div>
-                        <!-- Display the generated gif - preferably has a still option -->
-                        <div class="col-lg-4" id="persons-gif">
-                            <div class="card">
-                                <div class="card-header">A GIF related to <span id="selected-name-gif">*Amanda*</span>
-                                </div>
-                                <div class="card-body">
-                                    <div id="gif"></div>
-                                </div>
+                    </div>
+                    <!-- User input for a new search term and button to re-generate search -->
+                    <div class="col-lg-4" id="regenerate-button">
+                        <div class="card">
+                            <div class="card-header">Regenerate keyword for <span
+                                    id="selected-name-search">*Amanda*</span>
                             </div>
-                        </div>
-                        <!-- User input for a new search term and button to re-generate search -->
-                        <div class="col-lg-4" id="regenerate-button">
-                            <div class="card">
-                                <div class="card-header">Regenerate keyword for <span
-                                        id="selected-name-search">*Amanda*</span>
-                                </div>
-                                <div class="card-body">
-                                    <div class="input-group mb-3">
-                                        <input id="new-keyword" type="text" class="form-control" placeholder="keyword"
-                                            aria-describedby="button-addon2">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-light" type="button"
-                                                id="regenerate-keyword">Submit</button>
-                                        </div>
+                            <div class="card-body">
+                                <div class="input-group mb-3">
+                                    <input id="new-keyword" type="text" class="form-control" placeholder="keyword"
+                                        aria-describedby="button-addon2">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-light" type="button"
+                                            id="regenerate-keyword">Submit</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
+
+                <br>
+
+                <div class="row">
+                    <!-- Carousel for gift ideas - maybe user can drag to gifts to buy -->
+                    <div class="col-lg-12" id="gift-ideas">
+                        <div class="card">
+                            <div class="card-header">Etsy Gift Search
+                            </div>
+                            <div class="card-body">
+                                <form id="etsy-search">
+                                    <div class="input-group mb-3 form-group">
+                                        <input id="etsy-terms" type="text" class="form-control"
+                                            placeholder="search gifts" aria-describedby="button-addon2">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-light" type="submit"
+                                                id="etsy-button-search">Search</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div id="etsy-images"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <br>
+
+                <div class="row">
+                    <div class="col-lg-12" id="generated-ideas">
+                        <div class="card">
+                            <div class="card-header">
+                                Generated Gift Ideas
+                            </div>
+                            <div class="card-body">
+                                <div id="etsy-images-generated"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <br>
+
+                <div class="row">
+                    <!-- Slick Carousel for more gift ideas  -->
+                    <div class="col-lg-12" id="to-buy">
+                        <div class="card">
+                            <div class="card-header">
+                                Other Gift Ideas
+                            </div>
+                            <div class="card-body gallery-background">
+                                <div class="gallery gallery-responsive portfolio-slider">
+                                    <div class="inner">
+                                        <h2 class="other-gifts">Electronics</h2>
+                                        <a
+                                            href="https://www.amazon.com/gcx/Electronics-Gift-Guide/gfhz/events/?_encoding=UTF8&categoryId=egg19-hol-main&ref_=sv_cm_gft_hol19_1"><img
+                                                class="shop" src="assets/images/electronics.jpeg" alt="Electronics"></a>
+                                    </div>
+                                    <div class="inner">
+                                        <h2 class="other-gifts">Fur Babies</h2>
+                                        <a href="https://www.amazon.com/s?k=christmas+gifts+for+pets&ref=nb_sb_noss_1"><img
+                                                class="shop" src="assets/images/furBaby.jpeg" alt="Pet Gifts"></a>
+                                    </div>
+                                    <div class="inner">
+                                        <h2 class="other-gifts">For Her</h2>
+                                        <a
+                                            href="https://www.amazon.com/b/ref=gg_nav_1?pf_rd_r=F90PXAZRMK3KV25265WY&pf_rd_p=7b8ec6ee-914d-46d3-98a5-df7d300f15f5&pf_rd_m=ATVPDKIKX0DER&pf_rd_s=merchandised-search-4&pf_rd_t=&pf_rd_i=20209830011&node=20378457011"><img
+                                                class="shop" src="assets/images/forHer.jpeg" alt="Gifts for Her"></a>
+                                    </div>
+                                    <div class="inner">
+                                        <h2 class="other-gifts">For Him</h2>
+                                        <a
+                                            href="https://www.amazon.com/gcx/Gifts-for-Men/gfhz/ref=sxts_snpl_5_1_ef950e78-1984-4fb1-ac72-008ae41106ff?categoryId=adult-male&pd_rd_r=10f7624c-e8fa-4bb3-a880-3c31792a09d4&pd_rd_w=1FcOh&pd_rd_wg=BrQdG&pf_rd_p=ef950e78-1984-4fb1-ac72-008ae41106ff&pf_rd_r=5ABTBF3NV55DZDN88KVD&qid=1574164136&scrollState=eyJpdGVtSW5kZXgiOjAsInNjcm9sbE9mZnNldCI6LTEzODkuMjk2ODc1fQ%3D%3D&sectionManagerState=eyJibGFja2xpc3QiOnsiYW1hYm90IjoxfX0%3D"><img
+                                                class="shop" src="assets/images/giftsForHim.jpg"
+                                                alt="Gifts for Him"></a>
+                                    </div>
+                                    <div class="inner">
+                                        <h2 class="other-gifts">Kids</h2>
+                                        <a
+                                            href="https://www.amazon.com/gcx/Holiday-Toy-List/gfhz/events/?_encoding=UTF8&categoryId=holiday-toy-list&ref_=sv_cm_gft_hol19_4"><img
+                                                class="shop" src="assets/images/kidsGifts.jpeg"
+                                                alt="Gifts for Kids"></a>
+                                    </div>
+                                    <div class="inner">
+                                        <h2 class="other-gifts">Trending</h2>
+                                        <a
+                                            href="https://www.amazon.com/gcx/Trending-Gifts/gfhz/events/ref=cg_GHMGGEN_2b1_w?categoryId=ho-trending-gifts%EF%BB%BF&pf_rd_i=gf-landing&pf_rd_m=ATVPDKIKX0DER&pf_rd_p=6e0ee316-5344-4033-aee2-1cb6c4a88b4d&pf_rd_r=CZN4C9GBSQYXM4SQ6FZ2&pf_rd_s=desktop-top-slot-3&pf_rd_t=0&scrollState=eyJpdGVtSW5kZXgiOjAsInNjcm9sbE9mZnNldCI6NjMwLjg5MDYyNX0%3D&sectionManagerState=eyJibGFja2xpc3QiOnsiYW1hYm90IjoxfX0%3D"><img
+                                                class="shop" src="assets/images/winterGifts.jpeg"
+                                                alt="Winter Gifts"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Slick Carousel -->
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <br>
+    <br>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="addPersonModalCenter" tabindex="-1" role="dialog" aria-labelledby="addPersonCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Add another Person</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <label for="addPersonInput">Name</label>
+                        <input class="form-control" id="add-name" placeholder="John">
+                        <br>
+                        <label for="addPersonRelInput">Relationship</label>
+                        <input class="form-control" id="add-relationship" placeholder="">
+                        <br>
+                        <label for="addPersonGiftKeywordInput">Keyword for Gift Ideas</label>
+                        <input class="form-control" id="add-keyword" placeholder="">
+                        <br>
+                        <label for="addPersonPersonalityInput">Word to Describe this Person</label>
+                        <input class="form-control" id="add-personality" placeholder="">
+                        <br>
+                        <label for="addPersonBudgetInput">Budget</label>
+                        <input class="form-control" id="add-budget" placeholder="">
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-light" id="save-person">Save changes</button>
+
+
 
                     <br>
+                    <br>
 
-                    <div class="row">
-                        <!-- Carousel for gift ideas - maybe user can drag to gifts to buy -->
-                        <div class="col-lg-12" id="gift-ideas">
-                            <div class="card">
-                                <div class="card-header">Etsy Gift Search
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="addPersonModalCenter" tabindex="-1" role="dialog"
+                        aria-labelledby="addPersonCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalCenterTitle">Add another Person</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
                                 </div>
-                                <div class="card-body">
-                                    <form id="etsy-search">
-                                        <div class="input-group mb-3 form-group">
-                                            <input id="etsy-terms" type="text" class="form-control"
-                                                placeholder="search gifts" aria-describedby="button-addon2">
-                                            <div class="input-group-append">
-                                                <button class="btn btn-light" type="submit"
-                                                    id="etsy-button-search">Search</button>
-                                            </div>
-                                        </div>
+                                <div class="modal-body">
+                                    <form>
+                                        <label for="addPersonInput">Name</label>
+                                        <input class="form-control" id="add-name" placeholder="John">
+                                        <br>
+                                        <label for="addPersonRelInput">Relationship</label>
+                                        <input class="form-control" id="add-relationship" placeholder="">
+                                        <br>
+                                        <label for="addPersonGiftKeywordInput">Keyword for Gift Ideas</label>
+                                        <input class="form-control" id="add-keyword" placeholder="">
+                                        <br>
+                                        <label for="addPersonPersonalityInput">Word to Describe this Person</label>
+                                        <input class="form-control" id="add-personality" placeholder="">
+                                        <br>
+                                        <label for="addPersonBudgetInput">Budget</label>
+                                        <input class="form-control" id="add-budget" placeholder="">
                                     </form>
                                 </div>
-                                <div id="etsy-images"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <br>
-
-                    <div class="row">
-                        <div class="col-lg-12" id="generated-ideas">
-                            <div class="card">
-                                <div class="card-header">
-                                    Generated Gift Ideas
-                                </div>
-                                <div class="card-body">
-                                    <div id="etsy-images-generated"></div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-light" id="save-person">Save changes</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <br>
-
-                    <div class="row">
-                        <!-- Carousel for gifts to buy - maybe links to Etsy page to buy -->
-                        <div class="col-lg-12" id="to-buy">
-                            <div class="card">
-                                <div class="card-header">
-                                    Other Gift Ideas
-                                </div>
-                                <div class="card-body gallery-background">
-                                    <div class="gallery gallery-responsive portfolio-slider">
-                                        <div class="inner"><img src="assets/images/electronics.jpeg" alt="Electronics">
-                                        </div>
-                                        <div class="inner"><img src="assets/images/furBaby.jpeg" alt="Pet Gifts">
-                                        </div>
-                                        <div class="inner"><img src="assets/images/forHer.jpeg" alt="Gifts for Her">
-                                        </div>
-                                        <div class="inner"><img src="assets/images/giftsForHim.jpg" alt="Gifts for Him">
-                                        </div>
-                                        <div class="inner"><img src="assets/images/kidsGifts.jpeg" alt="Gifts for Kids">
-                                        </div>
-                                        <div class="inner"><img src="assets/images/winterGifts.jpeg" alt="Winter Gifts">
-                                        </div>
-                                    </div>
-                                <div class="card-body">
-
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Carousel -->
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <br>
-    <br>
-
-
-    <!-- Modal -->
-    <div class="modal fade" id="addPersonModalCenter" tabindex="-1" role="dialog" aria-labelledby="addPersonCenterTitle"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalCenterTitle">Add another Person</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <label for="addPersonInput">Name</label>
-                        <input class="form-control" id="add-name" placeholder="John">
-                        <br>
-                        <label for="addPersonRelInput">Relationship</label>
-                        <input class="form-control" id="add-relationship" placeholder="">
-                        <br>
-                        <label for="addPersonGiftKeywordInput">Keyword for Gift Ideas</label>
-                        <input class="form-control" id="add-keyword" placeholder="">
-                        <br>
-                        <label for="addPersonPersonalityInput">Word to Describe this Person</label>
-                        <input class="form-control" id="add-personality" placeholder="">
-                        <br>
-                        <label for="addPersonBudgetInput">Budget</label>
-                        <input class="form-control" id="add-budget" placeholder="">
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-light" id="save-person">Save changes</button>
-
-
-
-    <br>
-    <br>
-
-
-    <!-- Modal -->
-    <div class="modal fade" id="addPersonModalCenter" tabindex="-1" role="dialog" aria-labelledby="addPersonCenterTitle"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalCenterTitle">Add another Person</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <label for="addPersonInput">Name</label>
-                        <input class="form-control" id="add-name" placeholder="John">
-                        <br>
-                        <label for="addPersonRelInput">Relationship</label>
-                        <input class="form-control" id="add-relationship" placeholder="">
-                        <br>
-                        <label for="addPersonGiftKeywordInput">Keyword for Gift Ideas</label>
-                        <input class="form-control" id="add-keyword" placeholder="">
-                        <br>
-                        <label for="addPersonPersonalityInput">Word to Describe this Person</label>
-                        <input class="form-control" id="add-personality" placeholder="">
-                        <br>
-                        <label for="addPersonBudgetInput">Budget</label>
-                        <input class="form-control" id="add-budget" placeholder="">
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-light" id="save-person">Save changes</button>
-                </div>
-            </div>
-        </div>
-    </div>
 </body>
 <!-- footer-->
 
@@ -287,19 +310,20 @@
     <a class="nav-link" href="https://alixgrillo.github.io/"></a>
 </nav>
 <br>
- <nav class="navbar fixed-bottom-right">
-  <a class="navbar-brand nav-link copy" href="https://stacyholtz6.github.io">&copy;Stacy Holtz</a>
-  <a class="nav-link" href="https://github.com/stacyholtz6"></a>
+<nav class="navbar fixed-bottom-right">
+    <a class="navbar-brand nav-link copy" href="https://stacyholtz6.github.io">&copy;Stacy Holtz</a>
+    <a class="nav-link" href="https://github.com/stacyholtz6"></a>
 </nav>
 <br>
- <nav class="navbar fixed-bottom-left">
-  <a class="navbar-brand nav-link copy" href="https://joditivis.github.io/Bootstrap-Portfolio/">&copy;Jodi Tivis</a>
-  <a class="nav-link" href="https://github.com/joditivis"></a>
+<nav class="navbar fixed-bottom-left">
+    <a class="navbar-brand nav-link copy" href="https://joditivis.github.io/Bootstrap-Portfolio/">&copy;Jodi Tivis</a>
+    <a class="nav-link" href="https://github.com/joditivis"></a>
 </nav>
 <br>
- <nav class="navbar fixed-bottom-justified-left">
-  <a class="navbar-brand nav-link copy" href="https://chloe-design.github.io/bootstrap-portfolio/">&copy;Chloe Stephens</a>
-  <a class="nav-link" href="chloe-design.github.io"></a>
+<nav class="navbar fixed-bottom-justified-left">
+    <a class="navbar-brand nav-link copy" href="https://chloe-design.github.io/bootstrap-portfolio/">&copy;Chloe
+        Stephens</a>
+    <a class="nav-link" href="chloe-design.github.io"></a>
 </nav>
 
 
