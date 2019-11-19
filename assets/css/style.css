@@ -10,3 +10,50 @@
   transform: scale(1.1); 
 }
 
+.jumbotron.jumbotron-fluid {
+  background-image: url(assets/css/jumbotron-picture.jpeg);
+    
+}
+
+#email {
+
+    font-display: 'Optima', sans-serif;
+    size: 12px;
+}
+
+#add-email.btn-primary {
+    color: whitesmoke;
+    font-display: 'Optima', sans-serif; 
+
+}
+
+#btn.btn-primary {
+    color: #2a5559;
+    background-color: #2a5559;
+}
+
+.card-header {
+    color: #2a5559;
+    font-style: 'Optima', sans-serif;
+    text-align: center;
+}
+
+.form {
+    font-family: Optima, sans-serif;
+    font-style: bold;
+
+}
+
+.btn-primary {
+    color: white;
+    padding: #2a5559;
+
+}
+h1 { 
+    font-family: Optima, sans-serif;
+    font-size: 40px;
+    color: #D92B04;
+    ;
+
+}
+
