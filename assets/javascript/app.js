@@ -166,14 +166,9 @@ var terms = data.giftList[idx].keyword;
     // sets the user equal to the input value
     user = $("#email-id").val().trim();
 
-    // push a temp record to trigger the event listener
-    database.ref().push({
-      temp: "temp"
-    })
-
     // "value" event listener for FB
     database.ref().on("value", function(snapshot){
-
+      console.log("this gets triggered")
       // for each key item in the db, get the email and the temp items for each record,
       // if it's a "valid" record, then it will have an email, temp records are setup temporarily
       // to trigger the event listener, but will be removed below 
@@ -185,19 +180,19 @@ var terms = data.giftList[idx].keyword;
           // if the email in the FB record matches what was input, then this is the record we want
           // so it sets the global data equal to the data record associate with the key - we also store
           // the key so we know which record to update later 
-          // if this is temp record, remove it to keep the database clean
-          if (tmpDelete === "temp") {
-            database.ref(key).remove();
-          }
+          
      if (tmpEmail === user) {
-            data = snapshot.val().data;
+            //check to see if the data exists - if there is no data, it means the user deleted all of the
+            // people in the gift list, so we want to keep the data as as blank object
+            if(typeof snapshot.val().data !=='undefined'){
+                data = snapshot.val().data;
+            }
             id = snapshot.key;
             createButtons(id);
-            //updatePage(); // placeholder for a function that will update the DOM
+            console.log(user, data, id);
           }
      
         })
-        console.log(user, data, id);
       }
     })
   });
@@ -211,36 +206,40 @@ var terms = data.giftList[idx].keyword;
     $("#person-buttons").empty();
     console.log(data);
 
-    // Looping through the array of people
-    for (var i = 0; i < data.giftList.length; i++) {
+    // don't try to create buttons if the data is undefined - this is a
+    // fail safe to keep errors from happening
+    if(typeof data !== 'undefined'){
 
-      // Then dynamically generating buttons
-      var a = $("<li>");
-      // Adding a class to style the button to bootstrap
-      a.addClass("list-group-item list-group-item-action list-group-item-info");
-      // Adding a data-attribute
-      a.data("toggle", "list");
-      a.attr("person-index", i);
-      a.attr("db-key", id);
-      // Providing the button's text with the person's name
-      a.text(data.giftList[i].name);
-      // setup an attr of disabled to false (meaning it is in enabled) 
-      a.attr("disabled", false);
+      // Looping through the array of people
+      for (var i = 0; i < data.giftList.length; i++) {
 
-      // create a button that will hold the x to remove the word
-      var x = $("<button>");
-      // add a class to pull in the bootstrap close
-      x.addClass("close");
-      // add an x to the element as text
-      x.append("&times;");
-      // give the x an attribute with name - this will delete the proper button when clicked
-      // *** Might need to rethink this attribute ***
-      x.attr("person-name-button", i);
-      // append the x button
-      a.append(x);
+        // Then dynamically generating buttons
+        var a = $("<li>");
+        // Adding a class to style the button to bootstrap
+        a.addClass("list-group-item list-group-item-action list-group-item-info");
+        // Adding a data-attribute
+        a.data("toggle", "list");
+        a.attr("person-index", i);
+        a.attr("db-key", id);
+        // Providing the button's text with the person's name
+        a.text(data.giftList[i].name);
+        // setup an attr of disabled to false (meaning it is in enabled) 
+        a.attr("disabled", false);
 
-      // Adding the button to the HTML
-      $("#person-buttons").append(a);
+        // create a button that will hold the x to remove the word
+        var x = $("<button>");
+        // add a class to pull in the bootstrap close
+        x.addClass("close");
+        // add an x to the element as text
+        x.append("&times;");
+        // give the x an attribute with name - this will delete the proper button when clicked
+        x.attr("person-name-button", i);
+        // append the x button
+        a.append(x);
+
+        // Adding the button to the HTML
+        $("#person-buttons").append(a);
+      }
     }
   }
 
@@ -255,19 +254,32 @@ var terms = data.giftList[idx].keyword;
 
   // if the close button is clicked, run this function
   $(document).on("click", ".close", function(){
-    // return the parent element - this is the animal button
+    // return the parent element 
     var par = $(event.target).parent();
     // disable the parent button - this keeps the gifs from displaying when user is trying to 
     // remove the button
     par.attr("disabled", true);
-    // declare a variable of the animal of the clicked button
+    // declare a variable of the person of the clicked button
     var rem = $(this).attr("person-name-button");
-    // remove the element from the animals array
-    data.giftList.splice(rem,1);
-    // render the buttons again - the removed button will not be there anymore
-    createButtons();
+    console.log(data.giftList, data.giftList.length);
+
+    // if thre is only person in the list, then reset the gift list to an empty object
+    // and empty the buttons - this keeps it from going to "undefined"
+    if(data.giftList.length===1){
+      data = {
+        giftList: []
+      }
+      $("#person-buttons").empty();
+    } else{
+      // remove the element from the gift list array
+      data.giftList.splice(rem,1);
+      // render the buttons again - the removed button will not be there anymore
+      createButtons();
+    }
+    
     // submit the deletion to the database
     writeUserData(id, user, data);
+    console.log(data + "after push");
   })
 
   // ************ Make Changes to the Gift List ******************
@@ -308,124 +320,3 @@ var terms = data.giftList[idx].keyword;
   }
 });
 
-
-
-
-
-
-
-
-
-
-//console.log(user, data);
-    //var userUID = 1;
-
-    // var ref = database.ref('/gif-ting/' + userUID);
-    // ref.on('value', function(data) {
-    //   //data.key will be like -KPmraap79lz41FpWqLI
-    //   database.ref().push({
-    //     email: user,
-    //     data: data
-    //   })
-    // });
-    // userID = user.replace("@", "");
-    // userID = userID.split('.').join('');
-    // console.log(userID);
-    // writeUserData(userID, user, data);
-
-    // var userId = lists.indexOf(user)+1;
-    // console.log(user);
-    // console.log(userId);
-
-    // return firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
-    //   console.log(snapshot.val());
-    //   console.log(snapshot.val().email);
-      //var username = (snapshot.val() && snapshot.val().username) || 'Anonymous';
-    // ...
-
-   // userUID++;
-
-    // database.ref().push({
-    //   email: user,
-    //   data: data
-    // })
-
-
-    //console.log("determine if user exists");
-  //})
-
-  //var userId = user;
-  // database.ref('/users/' + userID).once('value').then(function(snapshot) {
-  // console.log(snapshot);
-  // // ...
-  // });
-
-  //console.log(database.ref("/gif-ting/").orderByChild('uid').equalTo(userUID));
-
-  //console.log(database.ref('/gif-ting/-LtqyPOmvrl7NBQZcgvE'));
-
-  // var userId = lists.user;
-  // console.log(userId);
-
-  // return firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
-  //   console.log(snapshot.val().email);
-  //   //var username = (snapshot.val() && snapshot.val().username) || 'Anonymous';
-  // // ...
-  // });
-
-  // database.ref().on("value", function(snapshot){
-  //   console.log("checking database");
-  //   for (var key in snapshot.val()){
-
-  //     var ref = database.ref(key);
-  //     ref.once("value").then(function(snapshot){
-  //           var tmpEmail = snapshot.val().email;
-  //           if(tmpEmail === user){
-  //             data=snapshot.val().data;
-  //           }
-  //       })
-  //   }
-  // })
-
-      // console.log(userExists);
-      // if(userExists === false){
-      //   // database.ref().push({
-      //   //   email: user,
-      //   //   data: data
-      //   // })
-      //   console.log("user doesn't exist");
-      // }
-    //})
-
-  // database.ref().on("child_added", function(childSnapshot){
-
-  //   // id = childSnapshot.key;
-  //   // console.log(id);
-  //   var childEmail = childSnapshot.val().email;
-  //   console.log(childEmail);
-  //   if(user === childEmail){
-  //     id = childSnapshot.key;
-  //   }
-  //   console.log(user, id);
-  //   console.log(database.ref(id));
-  //   var ref = database.ref(id);
-  //   ref.once("value").then(function(snapshot){
-  //     console.log(snapshot.val());
-  //     console.log(snapshot.val().email);
-  //     console.log(snapshot.key);
-  //     console.log(snapshot.val().data)
-  //   })
-  //   //console.log(database.child(id));
-  //   // var ref = database.ref(id);
-  //   // ref.once("value")
-  //   //   .then(function(snapshot) {
-  //   //     var key = snapshot.key; // "ada"
-  //   //     var childKey = snapshot.child("name/last").key; // "last"
-  //   //   });
-  // })
-
-  // var ref = database.ref("-Ltp_7u-F_Fojt65372p");
-  // ref.once("value").then(function(snapshot){
-  //   console.log(snapshot.val());
-  //   console.log(snapshot.val().email);
-  // })
