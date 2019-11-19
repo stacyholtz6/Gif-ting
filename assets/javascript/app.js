@@ -244,6 +244,13 @@ var terms = data.giftList[idx].keyword;
     }
   }
 
+  // ************ Regenerate Keyword ***************************
+
+  $(document).on("click", "#button-addon2", function(event){
+    event.preventDefault();
+    console.log("regenerate keyword");
+  })
+
   // ************ Delete a person on Gift List ******************
 
   // if the close button is clicked, run this function
