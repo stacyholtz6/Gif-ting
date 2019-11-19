@@ -15,6 +15,12 @@
     <!-- bootstrap -->
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
+
+    <!-- Slick Css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css">
+
+    <!-- Local Css -->
     <link rel="stylesheet" href="assets/css/style.css" />
 
 </head>
@@ -27,10 +33,11 @@
                 <hr>
                 <form id="email">
                     <div class="input-group mb-3 form-group" style="width: 300px;">
-                        <input id="email-id" type="text" class="form-control" placeholder="Enter Email" aria-describedby="button-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-light" type="submit" id="add-email">Search</button>
-                            </div>
+                        <input id="email-id" type="text" class="form-control" placeholder="Enter Email"
+                            aria-describedby="button-addon2">
+                        <div class="input-group-append">
+                            <button class="btn btn-light" type="submit" id="add-email">Search</button>
+                        </div>
                     </div>
                 </form>
                 <!-- <button id=test>Test</button> -->
@@ -66,67 +73,72 @@
                     <div class="row">
                         <!-- This should display what is captured on the modal -->
                         <div class="col-lg-4" id="persons-info">
-                                <div class="card">
-                                    <div class="card-header"><span id="selected-name">*Amanda's*</span> info
-                                    </div>
-                                        <div class="card-body">
-                                            <p>Relationship: <span id="relationship"></span></p>
-                                            <p>Keyword for gift ideas: <span id="keyword"></span></p>
-                                            <p>Word description: <span id="description"></span></p>
-                                            <p>Budget: <span id="budget"></span></p>
-                                        </div>
+                            <div class="card">
+                                <div class="card-header"><span id="selected-name">*Amanda's*</span> info
                                 </div>
+                                <div class="card-body">
+                                    <p>Relationship: <span id="relationship"></span></p>
+                                    <p>Keyword for gift ideas: <span id="keyword"></span></p>
+                                    <p>Word description: <span id="description"></span></p>
+                                    <p>Budget: <span id="budget"></span></p>
+                                </div>
+                            </div>
                         </div>
                         <!-- Display the generated gif - preferably has a still option -->
                         <div class="col-lg-4" id="persons-gif">
                             <div class="card">
                                 <div class="card-header">A GIF related to <span id="selected-name-gif">*Amanda*</span>
                                 </div>
-                                    <div class="card-body">
-                                        <div id="gif"></div>
-                                    </div>
+                                <div class="card-body">
+                                    <div id="gif"></div>
+                                </div>
                             </div>
                         </div>
                         <!-- User input for a new search term and button to re-generate search -->
                         <div class="col-lg-4" id="regenerate-button">
-                                <div class="card">
-                                    <div class="card-header">Regenerate keyword for <span id="selected-name-search">*Amanda*</span>
-                                    </div>
-                                        <div class="card-body">
-                                            <div class="input-group mb-3">
-                                                <input id="new-keyword" type="text" class="form-control" placeholder="keyword" aria-describedby="button-addon2">
-                                            <div class="input-group-append">
-                                            <button class="btn btn-light" type="button" id="regenerate-keyword">Submit</button>
-                                            </div>
-                                            </div>
-                                        </div>
+                            <div class="card">
+                                <div class="card-header">Regenerate keyword for <span
+                                        id="selected-name-search">*Amanda*</span>
                                 </div>
+                                <div class="card-body">
+                                    <div class="input-group mb-3">
+                                        <input id="new-keyword" type="text" class="form-control" placeholder="keyword"
+                                            aria-describedby="button-addon2">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-light" type="button"
+                                                id="regenerate-keyword">Submit</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <br> 
+                    <br>
 
                     <div class="row">
                         <!-- Carousel for gift ideas - maybe user can drag to gifts to buy -->
                         <div class="col-lg-12" id="gift-ideas">
-                                <div class="card">
-                                    <div class="card-header">Etsy Gift Search
-                                    </div>
-                                        <div class="card-body">
-                                            <form id="etsy-search"> 
-                                                <div class="input-group mb-3 form-group">
-                                                    <input id="etsy-terms" type="text" class="form-control" placeholder="search gifts" aria-describedby="button-addon2">
-                                                    <div class="input-group-append">
-                                                        <button class="btn btn-light" type="submit" id="etsy-button-search">Search</button>
-                                                    </div>
-                                                </div>
-                                            </form>  
-                                        </div>
-                                    <div id="etsy-images"></div>
+                            <div class="card">
+                                <div class="card-header">Etsy Gift Search
                                 </div>
+                                <div class="card-body">
+                                    <form id="etsy-search">
+                                        <div class="input-group mb-3 form-group">
+                                            <input id="etsy-terms" type="text" class="form-control"
+                                                placeholder="search gifts" aria-describedby="button-addon2">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-light" type="submit"
+                                                    id="etsy-button-search">Search</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div id="etsy-images"></div>
                             </div>
                         </div>
-                
+                    </div>
+
                     <br>
 
                     <div class="row">
@@ -136,7 +148,7 @@
                                     Generated Gift Ideas
                                 </div>
                                 <div class="card-body">
-                                        <div id="etsy-images-generated"></div>
+                                    <div id="etsy-images-generated"></div>
                                 </div>
                             </div>
                         </div>
@@ -146,62 +158,64 @@
 
                     <div class="row">
                         <!-- Carousel for gifts to buy - maybe links to Etsy page to buy -->
-                        <div class="col-lg-12" id="to-buy"> 
+                        <div class="col-lg-12" id="to-buy">
                             <div class="card">
                                 <div class="card-header">
-                                    Gifts to buy
+                                    Other Gift Ideas
                                 </div>
                                 <div class="card-body">
+
                                 </div>
                             </div>
-                        </div>                        
                         </div>
                     </div>
+                    <!-- End Carousel -->
                 </div>
             </div>
         </div>
+    </div>
 
-        <br>
-        <br>
+    <br>
+    <br>
 
 
-        <!-- Modal -->
-        <div class="modal fade" id="addPersonModalCenter" tabindex="-1" role="dialog"
-            aria-labelledby="addPersonCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalCenterTitle">Add another Person</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form>
-                            <label for="addPersonInput">Name</label>
-                            <input class="form-control" id="add-name" placeholder="John">
-                            <br>
-                            <label for="addPersonRelInput">Relationship</label>
-                            <input class="form-control" id="add-relationship" placeholder="">
-                            <br>
-                            <label for="addPersonGiftKeywordInput">Keyword for Gift Ideas</label>
-                            <input class="form-control" id="add-keyword" placeholder="">
-                            <br>
-                            <label for="addPersonPersonalityInput">Word to Describe this Person</label>
-                            <input class="form-control" id="add-personality" placeholder="">
-                            <br>
-                            <label for="addPersonBudgetInput">Budget</label>
-                            <input class="form-control" id="add-budget" placeholder="">
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-light" id="save-person">Save changes</button>
+    <!-- Modal -->
+    <div class="modal fade" id="addPersonModalCenter" tabindex="-1" role="dialog" aria-labelledby="addPersonCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Add another Person</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <label for="addPersonInput">Name</label>
+                        <input class="form-control" id="add-name" placeholder="John">
+                        <br>
+                        <label for="addPersonRelInput">Relationship</label>
+                        <input class="form-control" id="add-relationship" placeholder="">
+                        <br>
+                        <label for="addPersonGiftKeywordInput">Keyword for Gift Ideas</label>
+                        <input class="form-control" id="add-keyword" placeholder="">
+                        <br>
+                        <label for="addPersonPersonalityInput">Word to Describe this Person</label>
+                        <input class="form-control" id="add-personality" placeholder="">
+                        <br>
+                        <label for="addPersonBudgetInput">Budget</label>
+                        <input class="form-control" id="add-budget" placeholder="">
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-light" id="save-person">Save changes</button>
 
-                    </div>
                 </div>
             </div>
         </div>
+    </div>
 </body>
 
 <!-- jquery -->
@@ -213,9 +227,8 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
-
-
-
+<!-- Slick JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
 <!-- javascript -->
 <script src="assets/javascript/app.js"></script>
 
