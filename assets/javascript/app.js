@@ -34,6 +34,7 @@ $(document).ready(function () {
 
   //initially hides content until person from list is selected
   $("#persons-content").hide();
+  $("#gift-content").hide();
 
   // ************ Display Person Information when Button Clicked ******************
 
@@ -68,6 +69,7 @@ $(document).ready(function () {
   function displayPerson() {
     if (!$(this).attr("disabled")) {
       $("#persons-content").show();
+      $("#gift-content").show();
       var idx = $(this).attr("person-index");
 
       $("#selected-name").text(data.giftList[idx].name + "'s");
@@ -77,6 +79,7 @@ $(document).ready(function () {
       $("#budget").text(data.giftList[idx].budget);
       $("#selected-name-gif").text(data.giftList[idx].name);
       $("#selected-name-search").text(data.giftList[idx].name);
+      $("#section-gifts-to-buy").text(data.giftList[idx].name);
 
       currentGifteeIndex = idx;
 
