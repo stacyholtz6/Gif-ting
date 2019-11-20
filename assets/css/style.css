@@ -1,6 +1,5 @@
 .jumbotron.jumbotron-fluid {
-  background-image: url(assets/css/jumbotron-picture.jpeg);
-    
+  background-image: url(../css/jumbotron-picture.jpeg);
 }
 
 #email {
@@ -102,4 +101,9 @@ h1 {
 .other-gifts {
   color: #2a5559;
   text-align: center;
+}
+
+.gif-img {
+  height: 200px;
+  width: 215px;
 }
