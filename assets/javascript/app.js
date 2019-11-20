@@ -77,7 +77,13 @@ $(document).ready(function () {
 
   $(document).on("click", "#add-person-btn", function(event){
     event.preventDefault();
-    console.log("add person button clicked");
+    if(typeof user==='undefined' || user===""){
+      $("#email-error-message").text("Please enter your email prior to using the list.");
+    } else {
+      $("#addPersonModalCenter").modal('show');
+      $("#email-error-message").empty();
+    }
+    
   })
 
 
@@ -206,7 +212,8 @@ $(document).ready(function () {
 
   $("#add-email").on("click", function (event) {
     event.preventDefault();
-
+    // empty any error message
+    $("#email-error-message").empty();
     // hide the person's content when switching users
     $("#persons-content").hide();
     // empty the buttons - this will be necessary when a new user starts a list
