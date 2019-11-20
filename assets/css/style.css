@@ -47,20 +47,20 @@ h1 {
 /* CSS for etsy results */
 #etsy {
   margin: 5px;
-  border: 2px solid #D97904;
+  border: 2px solid #2a5559;
   transition: all .2s ease-in-out; 
 }
 
 #etsy-images {
-  background-color: #2a5559
+  background-color: #D97904
 }
 
 .etsy-body {
-  background-color: #2a5559
+  background-color: #D97904
 }
 
 .searching {
-  color: #D97904;
+  color: #A61103;
 }
 
 #etsy:hover { 
@@ -68,13 +68,10 @@ h1 {
 }
 
 /* Slick CSS */
-.portfolio-slider {
-  /* margin: 60px auto; */
-  /* max-width: 1200px; */
-  border-top: 4px solid #D97904;
-  border-bottom: 4px solid #D97904;
-  /*display: flex;*/
-/*   flex-flow: row wrap; */
+.portfolio-slider { 
+  border-top: 4px solid #2a5559;
+  border-bottom: 4px solid #2a5559;
+ 
 }
 .portfolio-slider {
   flex: 1 1 0;
@@ -85,21 +82,21 @@ h1 {
   padding: 20px;
 }
 
-.shop {
+.shop-img {
   width: 100%;
   height: auto;
-  border: 4px solid #D97904
+  border: 4px solid #2a5559
 }
-.shop:hover {
+.shop-img:hover {
   opacity: 0.9;
 }
 
-.gallery-background {
-  background-color: #2a5559;
+.gift-body {
+  background-color: #D97904;
 }
 
-.other-gifts {
-  color: #2a5559;
+.other-gifts-title {
+  color:#2a5559;
   text-align: center;
 }
 
@@ -108,15 +105,7 @@ h1 {
 body {
   background-color: #2a5559;
  }
- /* CSS for etsy results */
- #etsy {
-  margin: 5px;
-  border: 2px solid red;
-  transition: all .2s ease-in-out;
- }
- #etsy:hover {
-  transform: scale(1.1);
- }
+
  .jumbotron.jumbotron-fluid {
   background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbMQ4XHEjXdn1zm-bs702j_t1fc2ekO6tvJrd83PRgEjC7xZKjZg&s)
  }
