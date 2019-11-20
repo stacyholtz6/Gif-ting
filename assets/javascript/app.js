@@ -27,7 +27,8 @@ var data = {
 // store the ID of the firebase that links it with
 var id = "";
 var userExists = false;
-
+// store the selected gift-ee
+var currentGifteeIndex;
 
 $(document).ready(function () {
 
@@ -39,13 +40,28 @@ $(document).ready(function () {
   // run the add person function when the submit button on modal is clicked
   $(document).on("click", ".list-group-item", displayPerson);
 
+  // ************ Regenerate Keyword ******************
+
   // runs the generation of gift ideas based on that persons keyword when that person is clicked
   $(document).on("click", "#regenerate-keyword", regenerateKeyword);
 
   // *** working on the new keyword generatior form 
   function regenerateKeyword() {
-    var newKeyword = $("#new-keyword").val();
-    console.log(newKeyword);
+    // set the new input into the user's data
+    var newKeyword = $("#new-keyword").val().trim();
+    data.giftList[currentGifteeIndex].keyword = newKeyword;
+    
+    // display the new keyword
+    $("#keyword").text(data.giftList[currentGifteeIndex].keyword);
+
+    // update the Etsy box
+    searchEtsy(newKeyword, "displayideas");
+    
+    // push to FB
+    writeUserData(id, user, data);
+
+    // clear the input field
+    $("#new-keyword").val("");
   }
 
 
@@ -62,12 +78,14 @@ $(document).ready(function () {
       $("#selected-name-gif").text(data.giftList[idx].name);
       $("#selected-name-search").text(data.giftList[idx].name);
 
+      currentGifteeIndex = idx;
+
       var terms = data.giftList[idx].keyword;
-      searchEtsy(terms, "displayideas")
+      searchEtsy(terms, "displayideas");
 
        // displays gif based on personality/description of person
        var showGifs = data.giftList[idx].personality;
-       displayGif(showGifs, "displaygif")
+       displayGif(showGifs, "displaygif");
      }
      var personsDescription = $("#description").val();
      displayGif(personsDescription, "displayresult")
@@ -207,7 +225,6 @@ $(document).ready(function () {
 
     // "value" event listener for FB
     database.ref().on("value", function (snapshot) {
-      console.log("this gets triggered")
       // for each key item in the db, get the email and the temp items for each record,
       // if it's a "valid" record, then it will have an email, temp records are setup temporarily
       // to trigger the event listener, but will be removed below 
@@ -284,10 +301,11 @@ $(document).ready(function () {
 
   // ************ Regenerate Keyword ***************************
 
-  $(document).on("click", "#button-addon2", function (event) {
-    event.preventDefault();
-    console.log("regenerate keyword");
-  })
+  // $(document).on("click", "#regenerate-keyword", function (event) {
+  //   event.preventDefault();
+  //   var newWord = $("#new-keyword").val().trim();
+  //   console.log(newWord); 
+  // })
 
   // ************ Delete a person on Gift List ******************
 

@@ -118,8 +118,8 @@ body {
   transform: scale(1.1);
  }
  .jumbotron.jumbotron-fluid {
-  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbMQ4XHEjXdn1zm-bs702j_t1fc2ekO6tvJrd83PRgEjC7xZKjZg&s)
- }
+  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbMQ4XHEjXdn1zm-bs702j_t1fc2ekO6tvJrd83PRgEjC7xZKjZg&s);
+}
  
  #email {
     font-display: 'Optima', sans-serif;
