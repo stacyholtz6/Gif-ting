@@ -103,3 +103,72 @@ h1 {
   color: #2a5559;
   text-align: center;
 }
+/* newly added */
+
+body {
+  background-color: #2a5559;
+ }
+ /* CSS for etsy results */
+ #etsy {
+  margin: 5px;
+  border: 2px solid red;
+  transition: all .2s ease-in-out;
+ }
+ #etsy:hover {
+  transform: scale(1.1);
+ }
+ .jumbotron.jumbotron-fluid {
+  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbMQ4XHEjXdn1zm-bs702j_t1fc2ekO6tvJrd83PRgEjC7xZKjZg&s)
+ }
+ 
+ #email {
+    font-display: 'Optima', sans-serif;
+    size: 12px;
+ }
+ #add-email.btn-primary {
+    color: whitesmoke;
+    font-display: 'Optima', sans-serif;
+ }
+ #btn.btn-primary {
+    color: #2a5559;
+    background-color: #2a5559;
+ }
+ .card-header {
+    color: #2a5559;
+    font-style: 'Optima', sans-serif;
+    text-align: center;
+ }
+ .form {
+    font-family: 'Optima', sans-serif;
+    font-style: bold;
+ }
+ .btn-primary {
+    color: white;
+    padding: #2a5559;
+ }
+ h1 {
+    font-family: Optima, sans-serif;
+    font-size: 40px;
+    color: white;
+    ;
+ }
+ .navbar {
+  overflow: hidden;
+  background-color:#d98e04;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+ }
+ .navbar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+ }
+ .navbar a.active {
+  background-color:#d92b04;
+  color: white;
+ }
