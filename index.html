@@ -40,6 +40,7 @@
                         </div>
                     </div>
                 </form>
+                <div id="email-error-message"></div>
                 <!-- <button id=test>Test</button> -->
                 <!-- <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p> -->
             </div>
@@ -60,8 +61,9 @@
                             <li class="list-group-item list-group-item-action list-group-item-info" data-toggle="list">Paige</li> -->
                         </div>
                         <br>
-                        <button class="btn btn-light" id="add-person" type="button" data-toggle="modal"
-                            data-target="#addPersonModalCenter">Add Person</a>
+                        <!-- <button class="btn btn-light" id="add-person" type="button" data-toggle="modal"
+                            data-target="#addPersonModalCenter">Add Person</a> -->
+                        <button class="btn btn-light" id="add-person-btn">Add Person</button>
                     </div>
                 </div>
             </div>
@@ -219,7 +221,7 @@
             </div>
         </div>
     </div>
-    </div>
+    <!-- </div> -->
 
     <br>
     <br>
@@ -253,53 +255,19 @@
                         <label for="addPersonBudgetInput">Budget</label>
                         <input class="form-control" id="add-budget" placeholder="">
                     </form>
+                    <div id="modal-error-message"></div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-light" id="save-person">Save changes</button>
 
-
-
                     <br>
                     <br>
+                </div>
+            </div>
+        </div>
+    </div>
 
-
-                    <!-- Modal -->
-                    <div class="modal fade" id="addPersonModalCenter" tabindex="-1" role="dialog"
-                        aria-labelledby="addPersonCenterTitle" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalCenterTitle">Add another Person</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <form>
-                                        <label for="addPersonInput">Name</label>
-                                        <input class="form-control" id="add-name" placeholder="John">
-                                        <br>
-                                        <label for="addPersonRelInput">Relationship</label>
-                                        <input class="form-control" id="add-relationship" placeholder="">
-                                        <br>
-                                        <label for="addPersonGiftKeywordInput">Keyword for Gift Ideas</label>
-                                        <input class="form-control" id="add-keyword" placeholder="">
-                                        <br>
-                                        <label for="addPersonPersonalityInput">Word to Describe this Person</label>
-                                        <input class="form-control" id="add-personality" placeholder="">
-                                        <br>
-                                        <label for="addPersonBudgetInput">Budget</label>
-                                        <input class="form-control" id="add-budget" placeholder="">
-                                    </form>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-light" id="save-person">Save changes</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 </body>
 <!-- footer-->
 

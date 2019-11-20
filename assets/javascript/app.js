@@ -91,6 +91,20 @@ $(document).ready(function () {
     displayGif(personsDescription, "displayresult")
   }
 
+  // ************** Launch Modal *******************
+
+  $(document).on("click", "#add-person-btn", function(event){
+    event.preventDefault();
+    if(typeof user==='undefined' || user===""){
+      $("#email-error-message").text("Please enter your email prior to using the list.");
+    } else {
+      $("#addPersonModalCenter").modal('show');
+      $("#email-error-message").empty();
+    }
+    
+  })
+
+
   // ************** GIPHY API *******************
 
   function displayGif(personsDescription) {
@@ -142,13 +156,20 @@ $(document).ready(function () {
     var tmpPersonality = $("#add-personality").val().trim();
     var tmpBudget = $("#add-budget").val().trim();
 
-    // push to the data array and update firebase
-    updatedGiftListData(tmpName, tmpRelationship, tmpKeyword, tmpPersonality, tmpBudget);
-    writeUserData(id, user, data);
-    createButtons();
+    if(tmpName === "" || tmpKeyword === "" || tmpPersonality === "" || tmpBudget === ""){
+      $("#modal-error-message").text("Please complete all values before submitting form.");
+    } else{
+      $("#modal-error-message").empty();
+      // push to the data array and update firebase
+      updatedGiftListData(tmpName, tmpRelationship, tmpKeyword, tmpPersonality, tmpBudget);
+      writeUserData(id, user, data);
+      createButtons();
 
-    // closes the modal window
-    $("#addPersonModalCenter").modal('toggle');
+      // closes the modal window
+      $("#addPersonModalCenter").modal('toggle');
+    }
+
+
   }
 
   // ************ Esty API ******************
@@ -209,7 +230,8 @@ $(document).ready(function () {
 
   $("#add-email").on("click", function (event) {
     event.preventDefault();
-
+    // empty any error message
+    $("#email-error-message").empty();
     // hide the person's content when switching users
     $("#persons-content").hide();
     // empty the buttons - this will be necessary when a new user starts a list
