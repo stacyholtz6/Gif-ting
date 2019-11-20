@@ -64,8 +64,52 @@ $(document).ready(function () {
 
       var terms = data.giftList[idx].keyword;
       searchEtsy(terms, "displayideas")
+
+       // displays gif based on personality/description of person
+       var showGifs = data.giftList[idx].personality;
+       displayGif(showGifs, "displaygif")
+     }
+     var personsDescription = $("#description").val();
+     displayGif(personsDescription, "displayresult")
+   }
+ 
+   // ************** GIPHY API *******************
+ 
+   function displayGif(personsDescription) {
+ 
+     // query url link to giphy site for all the gifs data + api key
+     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + personsDescription + "&api_key=xh9BO1FJT1xjGQcybsfBleQdOUi40zTV&limit=1";
+ 
+     // creating an AJAX call to add gif 
+     $.ajax({
+       url: queryURL,
+       method: "GET"
+     }).then(function (response) {
+ 
+       var gifs = response.data;
+       console.log(response);
+ 
+       for (var i = 0; i < gifs.length; i++) {
+         var gifDiv = $("#display-gif");
+         var giphyImage = $("<img>");
+ 
+         giphyImage.attr("src-alt", gifs[i].images.fixed_height.url);
+         giphyImage.attr("src", gifs[i].images.fixed_height_still.url);
+         giphyImage.addClass("gif-img");
+ 
+         gifDiv.empty();
+ 
+         gifDiv.append(giphyImage);
+       }
+       // on click function for starting and stopping gifs
+       $(".gif-img").on("click", function () {
+         console.log(this);
+         var temp = $(this).attr("src-alt")
+         $(this).attr("src-alt", $(this).attr("src"))
+         $(this).attr("src", temp)
+       })
+     })
     }
-  }
 
   // ************ Add Person to Gift List ******************
 
