@@ -1,5 +1,5 @@
 .jumbotron.jumbotron-fluid {
-  background-image: url(../css/jumbotron-picture.jpeg);
+  color: #2a5592;
 }
 
 #email {
@@ -103,11 +103,17 @@ h1 {
 /* newly added */
 
 body {
-  background-color: #2a5559;
+  background-image: url(jumbotron-picture.jpeg );
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+  
  }
 
  .jumbotron.jumbotron-fluid {
-  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbMQ4XHEjXdn1zm-bs702j_t1fc2ekO6tvJrd83PRgEjC7xZKjZg&s);
+   background-color: #2a5559;
+   opacity:1;
+  
 }
  
  #email {
