@@ -51,13 +51,13 @@ $(document).ready(function () {
     // set the new input into the user's data
     var newKeyword = $("#new-keyword").val().trim();
     data.giftList[currentGifteeIndex].keyword = newKeyword;
-    
+
     // display the new keyword
     $("#keyword").text(data.giftList[currentGifteeIndex].keyword);
 
     // update the Etsy box
     searchEtsy(newKeyword, "displayideas");
-    
+
     // push to FB
     writeUserData(id, user, data);
 
@@ -70,6 +70,8 @@ $(document).ready(function () {
     if (!$(this).attr("disabled")) {
       $("#persons-content").show();
       $("#gift-content").show();
+      $('.gallery-responsive').show();
+      $(".gallery-responsive").slick("setPosition");
       var idx = $(this).attr("person-index");
 
       $("#selected-name").text(data.giftList[idx].name + "'s");
@@ -85,7 +87,7 @@ $(document).ready(function () {
 
       var terms = data.giftList[idx].keyword;
       searchEtsy(terms, "displayideas");
-      
+
       // displays gif based on personality/description of person
       var showGifs = data.giftList[idx].personality;
       displayGif(showGifs, "displaygif")
@@ -96,15 +98,15 @@ $(document).ready(function () {
 
   // ************** Launch Modal *******************
 
-  $(document).on("click", "#add-person-btn", function(event){
+  $(document).on("click", "#add-person-btn", function (event) {
     event.preventDefault();
-    if(typeof user==='undefined' || user===""){
+    if (typeof user === 'undefined' || user === "") {
       $("#email-error-message").text("Please enter your email prior to using the list.");
     } else {
       $("#addPersonModalCenter").modal('show');
       $("#email-error-message").empty();
     }
-    
+
   })
 
 
@@ -159,9 +161,9 @@ $(document).ready(function () {
     var tmpPersonality = $("#add-personality").val().trim();
     var tmpBudget = $("#add-budget").val().trim();
 
-    if(tmpName === "" || tmpKeyword === "" || tmpPersonality === "" || tmpBudget === ""){
+    if (tmpName === "" || tmpKeyword === "" || tmpPersonality === "" || tmpBudget === "") {
       $("#modal-error-message").text("Please complete all values before submitting form.");
-    } else{
+    } else {
       $("#modal-error-message").empty();
       // push to the data array and update firebase
       updatedGiftListData(tmpName, tmpRelationship, tmpKeyword, tmpPersonality, tmpBudget);
@@ -401,9 +403,10 @@ $(document).ready(function () {
     }
   }
 
-  // ************ Slick Carousel **********************************
+  // // ************ Slick Carousel **********************************
   $('.gallery-responsive').slick({
     dots: true,
+    // fade: true,
     infinite: true,
     speed: 300,
     slidesToShow: 3,
@@ -434,6 +437,6 @@ $(document).ready(function () {
       }
     ]
   });
-
+  // $('.gallery-responsive').show();
 
 });
