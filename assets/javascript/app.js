@@ -51,13 +51,13 @@ $(document).ready(function () {
     // set the new input into the user's data
     var newKeyword = $("#new-keyword").val().trim();
     data.giftList[currentGifteeIndex].keyword = newKeyword;
-    
+
     // display the new keyword
     $("#keyword").text(data.giftList[currentGifteeIndex].keyword);
 
     // update the Etsy box
     searchEtsy(newKeyword, "displayideas");
-    
+
     // push to FB
     writeUserData(id, user, data);
 
@@ -85,7 +85,7 @@ $(document).ready(function () {
 
       var terms = data.giftList[idx].keyword;
       searchEtsy(terms, "displayideas");
-      
+
       // displays gif based on personality/description of person
       var showGifs = data.giftList[idx].personality;
       displayGif(showGifs, "displaygif")
@@ -96,15 +96,15 @@ $(document).ready(function () {
 
   // ************** Launch Modal *******************
 
-  $(document).on("click", "#add-person-btn", function(event){
+  $(document).on("click", "#add-person-btn", function (event) {
     event.preventDefault();
-    if(typeof user==='undefined' || user===""){
+    if (typeof user === 'undefined' || user === "") {
       $("#email-error-message").text("Please enter your email prior to using the list.");
     } else {
       $("#addPersonModalCenter").modal('show');
       $("#email-error-message").empty();
     }
-    
+
   })
 
 
@@ -159,9 +159,16 @@ $(document).ready(function () {
     var tmpPersonality = $("#add-personality").val().trim();
     var tmpBudget = $("#add-budget").val().trim();
 
-    if(tmpName === "" || tmpKeyword === "" || tmpPersonality === "" || tmpBudget === ""){
+    // clear modal inputs
+    $("#add-name").val("");
+    $("#add-relationship").val("");
+    $("#add-keyword").val("");
+    $("#add-personality").val("");
+    $("#add-budget").val("");
+
+    if (tmpName === "" || tmpKeyword === "" || tmpPersonality === "" || tmpBudget === "") {
       $("#modal-error-message").text("Please complete all values before submitting form.");
-    } else{
+    } else {
       $("#modal-error-message").empty();
       // push to the data array and update firebase
       updatedGiftListData(tmpName, tmpRelationship, tmpKeyword, tmpPersonality, tmpBudget);
@@ -170,8 +177,8 @@ $(document).ready(function () {
 
       // closes the modal window
       $("#addPersonModalCenter").modal('toggle');
-    }
 
+    }
 
   }
 
@@ -239,6 +246,7 @@ $(document).ready(function () {
     $("#persons-content").hide();
     // empty the buttons - this will be necessary when a new user starts a list
     $("#person-buttons").empty();
+
     // reset the ID and data to "" - the follow code will assign the ID based on the e-mail
     id = "";
     data = {
@@ -247,7 +255,8 @@ $(document).ready(function () {
 
     // sets the user equal to the input value
     user = $("#email-id").val().trim();
-
+    // empty email input after button click
+    $("#email-id").val("");
     // "value" event listener for FB
     database.ref().on("value", function (snapshot) {
       // for each key item in the db, get the email and the temp items for each record,
