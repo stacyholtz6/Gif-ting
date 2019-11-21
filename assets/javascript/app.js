@@ -161,6 +161,15 @@ $(document).ready(function () {
     var tmpPersonality = $("#add-personality").val().trim();
     var tmpBudget = $("#add-budget").val().trim();
 
+
+    // clear modal inputs
+    $("#add-name").val("");
+    $("#add-relationship").val("");
+    $("#add-keyword").val("");
+    $("#add-personality").val("");
+    $("#add-budget").val("");
+
+
     if (tmpName === "" || tmpKeyword === "" || tmpPersonality === "" || tmpBudget === "") {
       $("#modal-error-message").text("Please complete all values before submitting form.");
     } else {
@@ -172,8 +181,8 @@ $(document).ready(function () {
 
       // closes the modal window
       $("#addPersonModalCenter").modal('toggle');
-    }
 
+    }
 
   }
 
@@ -241,6 +250,7 @@ $(document).ready(function () {
     $("#persons-content").hide();
     // empty the buttons - this will be necessary when a new user starts a list
     $("#person-buttons").empty();
+
     // reset the ID and data to "" - the follow code will assign the ID based on the e-mail
     id = "";
     data = {
@@ -249,7 +259,8 @@ $(document).ready(function () {
 
     // sets the user equal to the input value
     user = $("#email-id").val().trim();
-
+    // empty email input after button click
+    $("#email-id").val("");
     // "value" event listener for FB
     database.ref().on("value", function (snapshot) {
       // for each key item in the db, get the email and the temp items for each record,
