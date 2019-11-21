@@ -1,12 +1,7 @@
 .jumbotron.jumbotron-fluid {
   background-image: url(../css/jumbotron-picture.jpeg);
-}
-
-#email {
-
-    font-display: 'Optima', sans-serif;
-    size: 12px;
-}
+  border: #A61103;
+  }
 
 #add-email.btn-primary {
     color: whitesmoke;
@@ -34,13 +29,6 @@
 .btn-primary {
     color: white;
     padding: #2a5559;
-
-}
-h1 { 
-    font-family: Optima, sans-serif;
-    font-size: 40px;
-    color: #D92B04;
-    ;
 
 }
 
@@ -106,14 +94,14 @@ body {
   background-color: #2a5559;
  }
 
+
+
  .jumbotron.jumbotron-fluid {
   background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbMQ4XHEjXdn1zm-bs702j_t1fc2ekO6tvJrd83PRgEjC7xZKjZg&s);
+  padding: 20px;
+  border: #a61103;
 }
  
- #email {
-    font-display: 'Optima', sans-serif;
-    size: 12px;
- }
  #add-email.btn-primary {
     color: whitesmoke;
     font-display: 'Optima', sans-serif;
@@ -131,13 +119,18 @@ body {
     font-family: 'Optima', sans-serif;
     font-style: bold;
  }
+ .add-person-button{
+   background-color: #D97904;
+ }
+
  .btn-primary {
     color: white;
     padding: #2a5559;
  }
  h1 {
-    font-family: Optima, sans-serif;
-    font-size: 40px;
+    font-family: 'Optima', sans-serif;
+    font-size: 100px;
+    font-display: bold;
     color: white;
     ;
  }
