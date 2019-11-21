@@ -70,6 +70,8 @@ $(document).ready(function () {
     if (!$(this).attr("disabled")) {
       $("#persons-content").show();
       $("#gift-content").show();
+      $('.gallery-responsive').show();
+      $(".gallery-responsive").slick("setPosition");
       var idx = $(this).attr("person-index");
 
       $("#selected-name").text(data.giftList[idx].name + "'s");
@@ -159,12 +161,14 @@ $(document).ready(function () {
     var tmpPersonality = $("#add-personality").val().trim();
     var tmpBudget = $("#add-budget").val().trim();
 
+
     // clear modal inputs
     $("#add-name").val("");
     $("#add-relationship").val("");
     $("#add-keyword").val("");
     $("#add-personality").val("");
     $("#add-budget").val("");
+
 
     if (tmpName === "" || tmpKeyword === "" || tmpPersonality === "" || tmpBudget === "") {
       $("#modal-error-message").text("Please complete all values before submitting form.");
@@ -410,9 +414,10 @@ $(document).ready(function () {
     }
   }
 
-  // ************ Slick Carousel **********************************
+  // // ************ Slick Carousel **********************************
   $('.gallery-responsive').slick({
     dots: true,
+    // fade: true,
     infinite: true,
     speed: 300,
     slidesToShow: 3,
@@ -443,6 +448,6 @@ $(document).ready(function () {
       }
     ]
   });
-
+  // $('.gallery-responsive').show();
 
 });

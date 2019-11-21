@@ -1,3 +1,7 @@
+.gallery-responsive {
+display: none;
+}
+
 .jumbotron.jumbotron-fluid {
   background-image: url(../css/jumbotron-picture.jpeg);
   border: #A61103;
@@ -169,4 +173,5 @@ body {
 p {
   color:#2a5559;
 }
+
 
