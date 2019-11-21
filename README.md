@@ -10,7 +10,7 @@ one place! Gif-ting allows you to create a gift list based off of someone's pers
 a quick form and add people to a list. Click each 'Gif(t)ee', then click a GIF to animate. Then click on images that are generated to go to the site and purchase. Finally save gifts for later.
 
 ```
-## Tools/Languages Used:
+## Technologies Used:
 ```
 --- Javascript
 --- JQuery
@@ -18,6 +18,9 @@ a quick form and add people to a list. Click each 'Gif(t)ee', then click a GIF t
 --- HTML/CSS
 --- Slick Carousel
 --- Firebase Database
+--- GIPHY API
+--- Etsy API
+
 ```
 ## Features:
 
@@ -41,7 +44,7 @@ Fill out the form to add a person to your gift list.
 ```
 ![Add Person](assets/images/addPerson.gif)
 
-###### List generate for people on your list:
+###### List generated for people on your list:
 ```
 You can click on the name of a person that was added to your list.
 After clicking you can see their gif and gift ideas. 
@@ -50,34 +53,44 @@ After clicking you can see their gif and gift ideas.
 
 ###### Gif Generated for Person:
 ```
-Each person on you list has a gif generated for them based on the keyword that was entered when the form was filled out. 
+Each person on your list has a gif generated for them based on the keyword that was entered when the form was filled out. 
 ```
-![gif]()
+![gif](assets/images/generatedGif.gif)
 
 ###### Etsy Gift Search:
 ```
 Etsy gift suggestions are automatially added based on the keyword for gift that was added to the form. 
 ```
-![Etsy Gifts Automatically Generated]()
+![Etsy Gifts Automatically Generated](assets/images/generatedGifts.gif)
 
 
 ```
-You can also search for other gift ideas Etsy.
+You can also search for other gift ideas from Etsy.
 ```
-![Search for Other Etsy Gifts]()
+![Search for Other Etsy Gifts](assets/images/etsySearch.gif)
 
 ###### Slick Carousel:
 ```
 Want more gift ideas? Check out the "Other Gifts" area and click on the image to shop on Amazon. 
 ```
-![slick-carousel]()
+![slick-carousel](assets/images/slick.gif)
+
+###### Firebase Database:
+```
+-- All of the user information is stored in Firebase. 
+-- Firebase retrieves the user information based on the email address. 
+```
+![Fire Base](assets/images/fireBase.png)
 
 ## Acknowledgments:
+* Photo Carousel from [Slick Carousel](https://github.com/kenwheeler/slick)
+* Images from [Unsplash](https://unsplash.com/)
+* Favicon from [Favicon.io](https://favicon.io/)
 
 ## Contributors:
-[Alix Grillo](https://github.com/alixgrillo)
-[Chloe Stephens](https://github.com/chloe-design)
-[Jodi Tivis](https://github.com/joditivis)
-[Stacy Holtz](https://github.com/stacyholtz6)
+* [Alix Grillo](https://github.com/alixgrillo)
+* [Chloe Stephens](https://github.com/chloe-design)
+* [Jodi Tivis](https://github.com/joditivis)
+* [Stacy Holtz](https://github.com/stacyholtz6)
 
 
