@@ -303,6 +303,8 @@ $(document).ready(function () {
     $("#persons-content").hide();
     // empty the buttons - this will be necessary when a new user starts a list
     $("#person-buttons").empty();
+    // hide the gift content for new user
+    $("#gift-content").hide();
 
     // reset the ID and data to "" - the follow code will assign the ID based on the e-mail
     id = "";
