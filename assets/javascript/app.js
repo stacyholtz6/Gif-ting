@@ -92,6 +92,9 @@ $(document).ready(function () {
       // displays gif based on personality/description of person
       var showGifs = data.giftList[idx].personality;
       displayGif(showGifs, "displaygif")
+
+      //Hides initial welcome box when user inputs email//
+      $("#welcome-instructions").hide();
     }
     var personsDescription = $("#description").val();
     displayGif(personsDescription, "displayresult");
@@ -322,8 +325,6 @@ $(document).ready(function () {
 
   $("#add-email").on("click", function (event) {
     event.preventDefault();
-    //Hides initial welcome box when user inputs email//
-    $("#welcome-instructions").hide();
     // empty any error message
     $("#email-error-message").empty();
     // hide the person's content when switching users
@@ -394,7 +395,7 @@ $(document).ready(function () {
         // Then dynamically generating buttons
         var a = $("<li>");
         // Adding a class to style the button to bootstrap
-        a.addClass("list-group-item list-group-item-action list-group-item-info");
+        a.addClass("list-group-item");
         // Adding a data-attribute
         a.data("toggle", "list");
         a.attr("person-index", i);

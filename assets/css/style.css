@@ -2,45 +2,24 @@
 display: none;
 }
 
-.jumbotron.jumbotron-fluid {
+.jumbotron {
   border: 2px solid #8c0303;
   background-color: #2a5559;
   border-radius: 4px;
+  padding: 20px;
+  margin-top: 10px;
 }
 
-#add-email.btn-primary {
+#add-email {
     color: whitesmoke;
     font-family: 'Optima', sans-serif; 
-
-}
-
-#btn.btn-primary {
-    color: #2a5559;
-    background-color: #2a5559;
-}
-
-.card-header {
-    color: #2a5559;
-    font-family: 'Optima', sans-serif;
-    text-align: center;
-}
-
-.form {
-    font-family: 'Optima', sans-serif;
-    font-style: bold;
-
-}
-
-.btn-primary {
-    color: white;
-    padding: #2a5559;
-
 }
 
 /* CSS for etsy results */
 .save-etsy {
   margin: 5px;
   border: 2px solid #d99982;
+  border-radius: 3px;
   transition: all .2s ease-in-out; 
 }
 
@@ -48,27 +27,23 @@ display: none;
   background-color: #e8e8e8;
 }
 
-.etsy-body {
-  background-color: #e8e8e8;
-}
-
 .searching {
   color: #A61103;
 }
 
-#etsy:hover { 
+.save-etsy:hover { 
   transform: scale(1.1); 
 }
 
 /* Slick CSS */
 .portfolio-slider { 
-  border-top: 4px solid #d99982;
-  border-bottom: 4px solid #d99982;
+  border-top: 3px solid #d99982;
+  border-bottom: 3px solid #d99982;
  
 }
 .portfolio-slider {
   flex: 1 1 0;
-  background-color: whitesmoke;
+  background-color: #e8e8e8;
 }
 
 .inner {
@@ -78,7 +53,8 @@ display: none;
 .shop-img {
   width: 100%;
   height: auto;
-  border: 4px solid #2a5559
+  border: 3px solid #2a5559;
+  border-radius: 4px;
 }
 .shop-img:hover {
   opacity: 0.9;
@@ -98,66 +74,55 @@ display: none;
 /* newly added */
 
 body {
-  background-image: url(../images/peppermint.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-image: url(../images/peppermint.jpeg);
+  /* background-repeat: no-repeat; */
+  background-size: 100%;
 }
  
- #add-email.btn-primary {
-    color: whitesmoke;
-    font-family: 'Optima', sans-serif;
- }
- #btn.btn-primary {
-    color: #2a5559;
-    background-color: #2a5559;
- }
- .card-header {
+.card-header {
     color: #2a5559;
     font-family: 'Optima', sans-serif;
     text-align: center;
- }
- .form {
-    font-family: 'Optima', sans-serif;
-    font-style: bold;
+    font-size: 18px;
  }
 
- .btn-primary {
-    color: white;
-    padding: #2a5559;
- }
  .display-4 {
     /* font-family: 'Optima', sans-serif; */
     font-family: 'Fredericka the Great', cursive;
     /* font-family: 'Permanent Marker', cursive; */
-    font-size: 7rem;
+    font-size: 6rem;
     font-display: bold;
     color: white;
     text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
  }
  .navbar {
-  overflow: hidden;
-  background-color:#2a5559;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  padding: 6px;
- 
+    overflow: hidden;
+    background-color:#2a5559;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 5px;
+    margin-top: 20px;
+    border-top: 2px solid #8c0303;
  }
  .navbar-brand {
    color: #e8e8e8;
    font-size: small;
-  font-family: 'Optima', sans-serif;
+   font-family: 'Optima', sans-serif;
  }
 
 .gif-img {
   height: 200px;
   width: 215px;
 }
+
 #email-error-message{
   color: white;
+  font-family: 'Optima',sans-serif;
 }
+
 #modal-error-message{
-  color: red;
+  color: #8c0303;
 }
 
 p {
@@ -165,7 +130,6 @@ p {
 }
 
 #logged-in-message{
-
   width: 100%;
   text-align: right;
   color: white;
@@ -180,9 +144,16 @@ p {
   font-style: 'Optima', sans-serif;
   text-align: center;
 }
+
+#welcome-instructions {
+  margin-bottom: 35px;
+}
+
 .card {
   border: 2px solid #8c0303;
   background-color: #e8e8e8;
+  color: #2a5559;
+  font-family: 'Optima',sans-serif;
 }
 
 .modal{
@@ -190,28 +161,25 @@ p {
   font-family: 'Optima',sans-serif;
   color: #2a5559;
 }
-.card-body {
-  font-family: 'Optima',sans-serif;
-}
+
 .btn {
   background-color: #d99982;
-  color: #e8e8e8;
+  color: #f3f3f3;
 }
-.welcomebox {
-  background-color: #e8e8e8;
-}
-#email-error-message {
-  font-family: 'Optima',sans-serif;
-}
+
 #add-person-btn {
   margin-left: 50px;
 }
 
-.list-group-item-info{
-  background-color: #bfbbb4;
+.list-group-item {
+  background-color: #cfcecc;
   color: #8c0303;
 }
 
-.list-group-item-info:hover {
+.list-group-item:hover {
   background-color: #d99982;
+}
+
+#other-gift-ideas {
+  margin-bottom: 70px;
 }
