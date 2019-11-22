@@ -322,6 +322,8 @@ $(document).ready(function () {
 
   $("#add-email").on("click", function (event) {
     event.preventDefault();
+    //Hides initial welcome box when user inputs email//
+    $("#welcome-instructions").hide();
     // empty any error message
     $("#email-error-message").empty();
     // hide the person's content when switching users
