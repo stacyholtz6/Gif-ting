@@ -214,7 +214,8 @@ $(document).ready(function () {
 
     // using etsy value to generate and display results from the keyword
     terms = $('#etsy-terms').val();
-    searchEtsy(terms, "displayresults")
+    searchEtsy(terms, "displayresults");
+    $('#etsy-terms').val("");
   })
   function searchEtsy(terms, origin) {
     api_key = "82wfohi8ezzm1fq3vflms9ul";
