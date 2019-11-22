@@ -174,4 +174,13 @@ p {
   color:#2a5559;
 }
 
+#logged-in-message{
+
+  width: 100%;
+  text-align: right;
+  color: white;
+  padding: 10px;
+  font-weight: bold;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
 

@@ -312,6 +312,8 @@ $(document).ready(function () {
 
     // sets the user equal to the input value
     user = $("#email-id").val().trim();
+    // tell the user that they are logged in
+    $("#logged-in-message").text("You're logged in as: "+user);    
     // empty email input after button click
     $("#email-id").val("");
     // "value" event listener for FB
