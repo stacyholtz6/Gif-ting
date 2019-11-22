@@ -131,12 +131,14 @@ body {
     color: white;
     padding: #2a5559;
  }
- h1 {
-    font-family: 'Optima', sans-serif;
-    font-size: 100px;
+ .display-4 {
+    /* font-family: 'Optima', sans-serif; */
+    font-family: 'Fredericka the Great', cursive;
+    /* font-family: 'Permanent Marker', cursive; */
+    font-size: 7rem;
     font-display: bold;
     color: white;
-    ;
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
  }
  .navbar {
   overflow: hidden;
