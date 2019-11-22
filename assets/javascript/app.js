@@ -72,6 +72,7 @@ $(document).ready(function () {
       $("#gift-content").show();
       $('.gallery-responsive').show();
       $(".gallery-responsive").slick("setPosition");
+      $("#saved-gifts").empty();
       var idx = $(this).attr("person-index");
 
       $("#selected-name").text(data.giftList[idx].name + "'s");
@@ -93,7 +94,25 @@ $(document).ready(function () {
       displayGif(showGifs, "displaygif")
     }
     var personsDescription = $("#description").val();
-    displayGif(personsDescription, "displayresult")
+    displayGif(personsDescription, "displayresult");
+
+    // display savedGifts
+    var gifts = data.giftList[currentGifteeIndex].savedGiftIdea;
+    if(typeof data.giftList[currentGifteeIndex].savedGiftIdeaLink==='undefined'){
+      data.giftList[currentGifteeIndex]["savedGiftIdeaLink"] = "";
+    }
+    var giftsLink = data.giftList[currentGifteeIndex].savedGiftIdeaLink;
+    var savedGift = gifts.split("\n");
+    var savedGiftLink = giftsLink.split("\n");
+
+    for (var i =0; i<savedGift.length-1; i++ ) {
+      var savedGiftImg = JSON.parse(savedGift[i]);
+      var savedGiftLk = JSON.parse(savedGiftLink[i]);
+      var savedGiftItem = $(savedGiftImg);
+      var savedGiftItemLk = $(savedGiftLk);
+      savedGiftItem.append(savedGiftItemLk);
+      savedGiftItem.prependTo($('#saved-gifts'));
+    }
   }
 
   // ************** Launch Modal *******************
@@ -212,7 +231,7 @@ $(document).ready(function () {
             $('#etsy-images').empty();
             if (data.count > 0) {
               $.each(data.results, function (i, item) {
-               
+
                 var imageItem = $("<img>");
                 imageItem.addClass("save-etsy");
                 imageItem.attr("id", "etsy" + i);
@@ -221,7 +240,7 @@ $(document).ready(function () {
                 imageItem.append('<a href="' + item.url + '" target="_blank"></a>');
                 $("#etsy-images").append(imageItem);
               });
-              
+
             } else {
               $('<p>No results.</p>').appendTo('#etsy-images');
             }
@@ -231,7 +250,7 @@ $(document).ready(function () {
             $('#etsy-images-generated').empty();
             if (data.count > 0) {
               $.each(data.results, function (i, item) {
-                
+
                 var imageItem = $("<img>");
                 imageItem.addClass("save-etsy");
                 imageItem.attr("id", "etsy-g" + i);
@@ -240,7 +259,7 @@ $(document).ready(function () {
                 imageItem.append('<a href="' + item.url + '" target="_blank"></a>');
                 $("#etsy-images-generated").append(imageItem);
               });
-              
+
             } else {
               $('<p>No results.</p>').appendTo('#etsy-images-generated');
             }
@@ -272,13 +291,20 @@ $(document).ready(function () {
   function addGift(event) {
     event.preventDefault();
 
-      var giftItems = $('#' + savedId);
-      giftItems.attr("gift-status", "saved-gift");
-      giftItems.prependTo($('#saved-gifts'));
-      console.log("I am an unsaved gift");
+    var giftItems = $('#' + savedId);
+    giftItems.attr("gift-status", "saved-gift");
+    giftItems.prependTo($('#saved-gifts'));
 
-      $("#addGiftModalCenter").modal('toggle');
+    // add data to firebase
+    data.giftList[currentGifteeIndex].savedGiftIdea = data.giftList[currentGifteeIndex].savedGiftIdea + JSON.stringify(giftItems[0].outerHTML) + "\n";
+    if(typeof data.giftList[currentGifteeIndex].savedGiftIdeaLink==='undefined'){
+      data.giftList[currentGifteeIndex]["savedGiftIdeaLink"] = "";
     }
+    data.giftList[currentGifteeIndex].savedGiftIdeaLink = data.giftList[currentGifteeIndex].savedGiftIdeaLink + JSON.stringify(giftItems.children([0])[0].outerHTML) + "\n";
+    writeUserData(id, user, data);
+
+    $("#addGiftModalCenter").modal('toggle');
+  }
 
   // ************* Go to site (on modal) ****************
   $(document).on("click", "#go-to-site", goToSite);
@@ -288,7 +314,6 @@ $(document).ready(function () {
 
     var link = $('#' + savedId).children([0]);
     window.open(link.attr("href"), "_blank");
-    console.log(link);
 
     $("#addGiftModalCenter").modal('toggle');
   }
@@ -441,7 +466,8 @@ $(document).ready(function () {
       keyword: keyword,
       personality: personality,
       budget: budget,
-      savedGiftIdea: ""
+      savedGiftIdea: "",
+      savedGiftIdeaLink: ""
     })
   }
 
