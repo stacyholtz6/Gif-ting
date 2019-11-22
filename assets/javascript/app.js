@@ -213,9 +213,17 @@ $(document).ready(function () {
             $('#etsy-images').empty();
             if (data.count > 0) {
               $.each(data.results, function (i, item) {
-                $("<img id='etsy'/>").attr("src", item.Images[0].url_75x75).appendTo("#etsy-images").wrap(
-                  '<a href="' + item.url + '" target="_blank"></a>'
-                );
+                // $("<img class='save-etsy' id='etsy" + i + "'/>").attr("src", item.Images[0].url_75x75).attr("gift-status", "unsaved-gift").appendTo("#etsy-images").wrap(
+                //   '<a href="' + item.url + '" target="_blank"></a>'
+                // );
+                var imageItem = $("<img>");
+                imageItem.addClass("save-etsy");
+                imageItem.attr("id", "etsy" + i);
+                imageItem.attr("src", item.Images[0].url_75x75);
+                imageItem.attr("gift-status", "unsaved-gift")
+            
+                imageItem.append('<a href="' + item.url + '" target="_blank"></a>');
+                $("#etsy-images").append(imageItem);
               });
             } else {
               $('<p>No results.</p>').appendTo('#etsy-images');
@@ -226,9 +234,18 @@ $(document).ready(function () {
             $('#etsy-images-generated').empty();
             if (data.count > 0) {
               $.each(data.results, function (i, item) {
-                $("<img id='etsy'/>").attr("src", item.Images[0].url_75x75).appendTo("#etsy-images-generated").wrap(
-                  '<a href="' + item.url + '" target="_blank"></a>'
-                );
+                // $("<img id='etsy'/>").attr("src", item.Images[0].url_75x75).attr("gift-status", "unsaved-gift").appendTo("#etsy-images-generated").wrap(
+                //   '<a href="' + item.url + '" target="_blank"></a>'
+
+                // );
+                var imageItem = $("<img>");
+                imageItem.addClass("save-etsy");
+                imageItem.attr("id", "etsy-g" + i);
+                imageItem.attr("src", item.Images[0].url_75x75);
+                imageItem.attr("gift-status", "unsaved-gift")
+            
+                imageItem.append('<a href="' + item.url + '" target="_blank"></a>');
+                $("#etsy-images-generated").append(imageItem);
               });
             } else {
               $('<p>No results.</p>').appendTo('#etsy-images-generated');
@@ -238,6 +255,49 @@ $(document).ready(function () {
       }
     });
     return false;
+  }
+
+  var savedId;
+
+  // ************** Launch save gift modal ************
+  $(document).on("click", ".save-etsy", function (event) {
+    event.preventDefault();
+
+    savedId = $(this).attr("id");
+    if ($('#' + savedId).attr("gift-status") === "unsaved-gift") {
+      $("#addGiftModalCenter").modal('show');
+    } else {
+      var link = $('#' + savedId).children([0]);
+      window.open(link.attr("href"), "_blank");
+    }
+  })
+
+  // ************** Save gift (on modal) ***************
+  $(document).on("click", "#save-gift", addGift);
+
+  function addGift(event) {
+    event.preventDefault();
+
+    
+      var giftItems = $('#' + savedId);
+      giftItems.attr("gift-status", "saved-gift");
+      giftItems.prependTo($('#saved-gifts'));
+      console.log("I am an unsaved gift");
+
+      $("#addGiftModalCenter").modal('toggle');
+    }
+
+  // ************* Go to site (on modal) ****************
+  $(document).on("click", "#go-to-site", goToSite);
+
+  function goToSite(event) {
+    event.preventDefault();
+
+    var link = $('#' + savedId).children([0]);
+    window.open(link.attr("href"), "_blank");
+    console.log(link);
+
+    $("#addGiftModalCenter").modal('toggle');
   }
 
   // ************ User Enters Email to "Login" ******************
@@ -259,6 +319,17 @@ $(document).ready(function () {
 
     // sets the user equal to the input value
     user = $("#email-id").val().trim();
+
+    // make sure email is a valid email address
+    //   var emailRegex = new RegExp(/^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$/i);
+    //   var valid = emailRegex.test(emailAddress);
+    //   if (!valid) {
+    //     alert("Invalid e-mail address");
+    //     return false;
+    //   } else {
+    //     return true;
+    //   }
+    // });
     // empty email input after button click
     $("#email-id").val("");
     // "value" event listener for FB
