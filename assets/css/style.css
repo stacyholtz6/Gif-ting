@@ -3,13 +3,14 @@ display: none;
 }
 
 .jumbotron.jumbotron-fluid {
-  background-image: url(../css/jumbotron-picture.jpeg);
-  border: #A61103;
-  }
+  border: 2px solid #590202;
+  background-color: #2a5559;
+  border-radius: 4px;
+}
 
 #add-email.btn-primary {
     color: whitesmoke;
-    font-display: 'Optima', sans-serif; 
+    font-family: 'Optima', sans-serif; 
 
 }
 
@@ -20,12 +21,12 @@ display: none;
 
 .card-header {
     color: #2a5559;
-    font-style: 'Optima', sans-serif;
+    font-family: 'Optima', sans-serif;
     text-align: center;
 }
 
 .form {
-    font-family: Optima, sans-serif;
+    font-family: 'Optima', sans-serif;
     font-style: bold;
 
 }
@@ -39,16 +40,16 @@ display: none;
 /* CSS for etsy results */
 .save-etsy {
   margin: 5px;
-  border: 2px solid #2a5559;
+  border: 2px solid #d99982;
   transition: all .2s ease-in-out; 
 }
 
 #etsy-images {
-  background-color: #D97904
+  background-color: #e8e8e8;
 }
 
 .etsy-body {
-  background-color: #D97904
+  background-color: #e8e8e8;
 }
 
 .searching {
@@ -61,8 +62,8 @@ display: none;
 
 /* Slick CSS */
 .portfolio-slider { 
-  border-top: 4px solid #2a5559;
-  border-bottom: 4px solid #2a5559;
+  border-top: 4px solid #d99982;
+  border-bottom: 4px solid #d99982;
  
 }
 .portfolio-slider {
@@ -84,31 +85,27 @@ display: none;
 }
 
 .gift-body {
-  background-color: #D97904;
+  background-color: #e8e8e8;
+  font-family: 'Optima',sans-serif;
 }
 
 .other-gifts-title {
   color:#2a5559;
   text-align: center;
+  font-family: 'Optima',sans-serif;
 }
 
 /* newly added */
 
 body {
-  background-color: #2a5559;
- }
-
-
-
- .jumbotron.jumbotron-fluid {
-  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbMQ4XHEjXdn1zm-bs702j_t1fc2ekO6tvJrd83PRgEjC7xZKjZg&s);
-  padding: 20px;
-  border: #a61103;
+  background-image: url(../images/peppermint.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
  
  #add-email.btn-primary {
     color: whitesmoke;
-    font-display: 'Optima', sans-serif;
+    font-family: 'Optima', sans-serif;
  }
  #btn.btn-primary {
     color: #2a5559;
@@ -116,15 +113,12 @@ body {
  }
  .card-header {
     color: #2a5559;
-    font-style: 'Optima', sans-serif;
+    font-family: 'Optima', sans-serif;
     text-align: center;
  }
  .form {
     font-family: 'Optima', sans-serif;
     font-style: bold;
- }
- .add-person-button{
-   background-color: #D97904;
  }
 
  .btn-primary {
@@ -142,23 +136,17 @@ body {
  }
  .navbar {
   overflow: hidden;
-  background-color:#d98e04;
+  background-color:#2a5559;
   position: fixed;
   bottom: 0;
   width: 100%;
+  padding: 6px;
+ 
  }
- .navbar a {
-  float: left;
-  display: block;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
- }
- .navbar a.active {
-  background-color:#d92b04;
-  color: white;
+ .navbar-brand {
+   color: #e8e8e8;
+   font-size: small;
+  font-family: 'Optima', sans-serif;
  }
 
 .gif-img {
@@ -182,7 +170,48 @@ p {
   text-align: right;
   color: white;
   padding: 10px;
+  font-family: 'Optima',sans-serif;
   font-weight: bold;
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
+#instructions {
+  color: #2a5559;
+  font-style: 'Optima', sans-serif;
+  text-align: center;
+}
+.card {
+  border: 2px solid #8c0303;
+  background-color: #e8e8e8;
+}
+
+.modal{
+  background-color: #e8e8e8;
+  font-family: 'Optima',sans-serif;
+  color: #2a5559;
+}
+.card-body {
+  font-family: 'Optima',sans-serif;
+}
+.btn {
+  background-color: #d99982;
+  color: #e8e8e8;
+}
+.welcomebox {
+  background-color: #e8e8e8;
+}
+#email-error-message {
+  font-family: 'Optima',sans-serif;
+}
+#add-person-btn {
+  margin-left: 50px;
+}
+
+.list-group-item-info{
+  background-color: #bfbbb4;
+  color: #8c0303;
+}
+
+.list-group-item-info:hover {
+  background-color: #d99982;
+}
