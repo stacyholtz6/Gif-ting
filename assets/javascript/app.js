@@ -183,7 +183,6 @@ $(document).ready(function () {
       $("#addPersonModalCenter").modal('toggle');
 
     }
-
   }
 
   // ************ Esty API ******************
@@ -213,18 +212,16 @@ $(document).ready(function () {
             $('#etsy-images').empty();
             if (data.count > 0) {
               $.each(data.results, function (i, item) {
-                // $("<img class='save-etsy' id='etsy" + i + "'/>").attr("src", item.Images[0].url_75x75).attr("gift-status", "unsaved-gift").appendTo("#etsy-images").wrap(
-                //   '<a href="' + item.url + '" target="_blank"></a>'
-                // );
+               
                 var imageItem = $("<img>");
                 imageItem.addClass("save-etsy");
                 imageItem.attr("id", "etsy" + i);
                 imageItem.attr("src", item.Images[0].url_75x75);
-                imageItem.attr("gift-status", "unsaved-gift")
-            
+                imageItem.attr("gift-status", "unsaved-gift");
                 imageItem.append('<a href="' + item.url + '" target="_blank"></a>');
                 $("#etsy-images").append(imageItem);
               });
+              
             } else {
               $('<p>No results.</p>').appendTo('#etsy-images');
             }
@@ -234,19 +231,16 @@ $(document).ready(function () {
             $('#etsy-images-generated').empty();
             if (data.count > 0) {
               $.each(data.results, function (i, item) {
-                // $("<img id='etsy'/>").attr("src", item.Images[0].url_75x75).attr("gift-status", "unsaved-gift").appendTo("#etsy-images-generated").wrap(
-                //   '<a href="' + item.url + '" target="_blank"></a>'
-
-                // );
+                
                 var imageItem = $("<img>");
                 imageItem.addClass("save-etsy");
                 imageItem.attr("id", "etsy-g" + i);
                 imageItem.attr("src", item.Images[0].url_75x75);
-                imageItem.attr("gift-status", "unsaved-gift")
-            
+                imageItem.attr("gift-status", "unsaved-gift");
                 imageItem.append('<a href="' + item.url + '" target="_blank"></a>');
                 $("#etsy-images-generated").append(imageItem);
               });
+              
             } else {
               $('<p>No results.</p>').appendTo('#etsy-images-generated');
             }
@@ -278,7 +272,6 @@ $(document).ready(function () {
   function addGift(event) {
     event.preventDefault();
 
-    
       var giftItems = $('#' + savedId);
       giftItems.attr("gift-status", "saved-gift");
       giftItems.prependTo($('#saved-gifts'));
@@ -319,17 +312,6 @@ $(document).ready(function () {
 
     // sets the user equal to the input value
     user = $("#email-id").val().trim();
-
-    // make sure email is a valid email address
-    //   var emailRegex = new RegExp(/^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$/i);
-    //   var valid = emailRegex.test(emailAddress);
-    //   if (!valid) {
-    //     alert("Invalid e-mail address");
-    //     return false;
-    //   } else {
-    //     return true;
-    //   }
-    // });
     // empty email input after button click
     $("#email-id").val("");
     // "value" event listener for FB
