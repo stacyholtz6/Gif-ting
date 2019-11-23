@@ -156,7 +156,7 @@ p {
   font-family: 'Optima',sans-serif;
 }
 
-.modal{
+.modal-content{
   background-color: #e8e8e8;
   font-family: 'Optima',sans-serif;
   color: #2a5559;
@@ -168,7 +168,8 @@ p {
 }
 
 #add-person-btn {
-  margin-left: 50px;
+  display: block;
+  margin: 0 auto;
 }
 
 .list-group-item {
@@ -182,4 +183,82 @@ p {
 
 #other-gift-ideas {
   margin-bottom: 70px;
+}
+
+@media screen and (max-width:1490px) {
+  .gif-img {
+    height: 190px;
+    width: 200px;
+  }
+}
+
+@media screen and (max-width:1354px) {
+  .gif-img {
+    display: block;
+    margin: 0 auto;
+  }
+
+  .people-list {
+    margin-bottom: 20px;
+  }
+
+  .info {
+    margin-bottom: 20px;
+  }
+
+  .gif {
+    margin-bottom: 20px;
+  }
+
+  .saved-gifts {
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (max-width:1199px) {
+  .gif-img {
+    height: 150px;
+    width: 160px;
+  }
+}
+
+@media screen and (max-width:1024px) {
+  .gif-img {
+    height: 150px;
+    width: 160px;
+  }
+}
+
+@media screen and (max-width:768px) {
+  .gif-img {
+    height: 240px;
+    width: 250px;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .people-list {
+    margin-bottom: 20px;
+  }
+
+  .info {
+    margin-bottom: 20px;
+  }
+
+  .gif {
+    margin-bottom: 20px;
+  }
+
+  .saved-gifts {
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (max-width:375px) {
+  .gif-img {
+    height: 210px;
+    width: 225px;
+    display: block;
+    margin: 0 auto;
+  }
 }
